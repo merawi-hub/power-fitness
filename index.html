@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenn - Modern Gym Management System</title>
+    <link rel="stylesheet" href="newGym.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container"> 
+            <div class="navbar">
+                <div class="logo">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>POWER<span class="highlight">FIT</span></span>
+                </div>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="#recreation" class="nav-link" data-page="recreation">Recreation</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="monthly pay.html">Monthly Payment</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-buttons">
+                    <a href="#login" class="btn btn-outline nav-link" data-page="login">Login</a>
+                    <a href="membership.html" class="btn btn-primary">Register</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- HOME PAGE -->
+        <div class="page active" id="home">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content container">
+                    <h1 class="animate-fade-in"><span class="highlight">POWER</span>FIT</h1>
+                    <p class="animate-slide-up">Transform your body, transform your life. Join our community of fitness enthusiasts today.</p>
+                    <div class="hero-buttons animate-fade-in">
+                        <a href="membership.html" class="btn btn-primary">Register <i class="fas fa-arrow-right"></i></a>
+                        <a href="#about" class="btn btn-outline-light nav-link" data-page="about">Learn More</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features section-padding">
+                <div class="container">
+                    <h2 class="section-title">Why Choose PowerFit?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card animate-fade-in">
+                            <div class="feature-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <h3>State-of-the-art Equipment</h3>
+                            <p>Access to the latest fitness technology and premium equipment.</p>
+                        </div>
+                        <div class="feature-card animate-fade-in" style="animation-delay: 100ms;">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Expert Trainers</h3>
+                            <p>Our certified trainers create personalized plans for your goals.</p>
+                        </div>
+                        <div class="feature-card animate-fade-in" style="animation-delay: 200ms;">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Flexible Scheduling</h3>
+                            <p>Book classes and sessions that fit your busy lifestyle.</p>
+                        </div>
+                        <div class="feature-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="feature-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h3>Affordable Plans</h3>
+                            <p>Membership options designed to fit every budget.</p>
+                        </div>
+                        <div class="feature-card animate-fade-in" style="animation-delay: 400ms;">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Results Guaranteed</h3>
+                            <p>Our proven methods deliver the results you're looking for.</p>
+                        </div>
+                        <div class="feature-card animate-fade-in" style="animation-delay: 500ms;">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Community Support</h3>
+                            <p>Join a community that motivates and inspires you daily.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Programs Preview -->   `
+            <section class="programs-preview section-padding bg-light">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Our Programs</h2>
+                        <a href="programs.html" >View All Programs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="programs-grid">
+                        <div class="program-card animate-fade-in">
+                            <div class="program-image">
+                                <img src="strength.jfif" alt="Strength Training">
+                                <div class="program-overlay"></div>
+                            </div>
+                            <div class="program-content">
+                                <h3>Strength Training</h3>
+                                <p>Build muscle and increase strength with our comprehensive program.</p>
+                                <a href="programs.html" data-page="programs">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="program-card animate-fade-in" style="animation-delay: 150ms;">
+                            <div class="program-image">
+                                <img src="cardio.jfif" alt="Cardio Fitness">
+                                <div class="program-overlay"></div>
+                            </div>
+                            <div class="program-content">
+                                <h3>Cardio Fitness</h3>
+                                <p>Improve your endurance and heart health with our cardio sessions.</p>
+                                <a href="programs.html" >Learn More</a>
+                            </div>
+                        </div>
+                        <div class="program-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="program-image">
+                                <img src="yoga.jfif" alt="Yoga & Flexibility">
+                                <div class="program-overlay"></div>
+                            </div>
+                            <div class="program-content">
+                                <h3>Yoga & Flexibility</h3>
+                                <p>Enhance your flexibility and find inner peace with our yoga classes.</p>
+                                <a href="programs.html"  data-page="programs">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="testimonials section-padding">
+                <div class="container">
+                    <h2 class="section-title">What Our Members Say</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card animate-fade-in">
+                            <div class="testimonial-image">
+                                <img src="Henok Ayenew.jfif" alt="Henok Ayenew">
+                            </div>
+                            <p class="testimonial-quote">"PowerFit transformed my fitness journey. The trainers are exceptional and the community is so supportive!"</p>
+                            <h4>Henok Ayenew</h4>
+                            <p class="testimonial-role">Member since 2018</p>
+                        </div>
+                        <div class="testimonial-card animate-fade-in" style="animation-delay: 150ms;">
+                            <div class="testimonial-image">
+                                <img src="Biruk Alemayew.jfif" alt="Biruk Alemayew">
+                            </div>
+                            <p class="testimonial-quote">"I've tried many gyms, but none compare to the equipment and atmosphere at PowerFit. It's become my second home."</p>
+                            <h4>Biruk Alemayew</h4>
+                            <p class="testimonial-role">Member since 2020</p>
+                        </div>
+                        <div class="testimonial-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="testimonial-image">
+                                <img src="sosina haile.jfif" alt="Sosina Haile">
+                            </div>
+                            <p class="testimonial-quote">"The variety of classes keeps me motivated and the results speak for themselves. Best decision I ever made!"</p>
+                            <h4>Sosina Haile</h4>
+                            <p class="testimonial-role">Member since 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta">
+                <div class="container">
+                    <h2 class="animate-fade-in">Ready to Start Your Fitness Journey?</h2>
+                    <p class="animate-slide-up">Join PowerFit today and get access to all our premium facilities, expert trainers, and a supportive community.</p>
+                    <a href="membership.html" class="btn btn-primary btn-lg animate-pulse">Register Now</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div class="page" id="about">
+            <!-- About Hero Section -->
+            <section class="page-hero about-hero">
+                <div class="container">
+                    <h1 class="animate-fade-in">About <span class="highlight">POWER</span>FIT</h1>
+                    <p class="animate-slide-up">Our mission is to empower individuals to achieve their fitness goals in a supportive and motivating environment.</p>
+                </div>
+            </section>
+
+            <!-- Our Story -->
+            <section class="our-story section-padding">
+                <div class="container">
+                    <div class="two-column-grid">
+                        <div class="column-content animate-slide-right">
+                            <h2>Our Story</h2>
+                            <p>Founded in 2010, PowerFit began with a simple vision: to create a fitness center that caters to individuals of all fitness levels and backgrounds. What started as a small gym with limited equipment has grown into a state-of-the-art facility with multiple locations across the country.</p>
+                            <p>Our founder, Hintsa Ambaw, a former professional athlete, recognized the need for a gym that combined premium equipment with expert guidance and a supportive community. This philosophy remains at the core of everything we do at PowerFit.</p>
+                            <p>Over the years, we've helped thousands of members transform their lives through fitness, and we continue to evolve and improve our offerings to meet the changing needs of our community.</p>
+                        </div>
+                        <div class="column-image animate-slide-left">
+                            <img src="story.jfif" alt="Our story">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Values -->
+            <section class="our-values section-padding bg-light">
+                <div class="container">
+                    <h2 class="section-title">Our Core Values</h2>
+                    <div class="values-grid">
+                        <div class="value-card animate-fade-in">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>Excellence</h3>
+                            <p>We strive for excellence in everything we do, from our facilities to our programs.</p>
+                        </div>
+                        <div class="value-card animate-fade-in" style="animation-delay: 150ms;">
+                            <div class="value-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Integrity</h3>
+                            <p>We operate with honesty, transparency, and always put our members' needs first.</p>
+                        </div>
+                        <div class="value-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="value-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Community</h3>
+                            <p>We foster a supportive community where everyone feels welcome and motivated.</p>
+                        </div>
+                        <div class="value-card animate-fade-in" style="animation-delay: 450ms;">
+                            <div class="value-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>We continuously evolve and improve our offerings to provide the best experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="team section-padding">
+                <div class="container">
+                    <h2 class="section-title">Meet Our Team</h2>
+                    <div class="team-grid">
+                        <div class="team-card animate-fade-in">
+                            <div class="team-image">
+                                <img src="hintsa.jfif" alt="Hintsa Ambaw">
+                            </div>
+                            <div class="team-content">
+                                <h3>Hintsa Ambaw</h3>
+                                <p class="team-role">Founder & CEO</p>
+                                <p class="team-bio">Former professional athlete with over 15 years of experience in the fitness industry.</p>
+                            </div>
+                        </div>
+                        <div class="team-card animate-fade-in" style="animation-delay: 150ms;">
+                            <div class="team-image">
+                                <img src="teamir.jfif" alt="Teamir Yilma">
+                            </div>
+                            <div class="team-content">
+                                <h3>Teamir Yilma</h3>
+                                <p class="team-role">Head Trainer</p>
+                                <p class="team-bio">Certified personal trainer specializing in strength training and nutrition.</p>
+                            </div>
+                        </div>
+                        <div class="team-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="team-image">
+                                <img src="biruk.jfif" alt="Biruk Destaw">
+                            </div>
+                            <div class="team-content">
+                                <h3>Biruk Destaw</h3>
+                                <p class="team-role">Yoga Instructor</p>
+                                <p class="team-bio">Internationally certified yoga instructor with 7+ years of teaching experience.</p>
+                            </div>
+                        </div>
+                        <div class="team-card animate-fade-in" style="animation-delay: 450ms;">
+                            <div class="team-image">
+                                <img src="haimanot.jfif" alt="Haimanot Beyene">
+                            </div>
+                            <div class="team-content">
+                                <h3>Haimanot Beyene</h3>
+                                <p class="team-role">Nutritionist</p>
+                                <p class="team-bio">Registered dietitian with expertise in sports nutrition and weight management.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Facilities -->
+            <section class="facilities section-padding bg-light">
+                <div class="container">
+                    <h2 class="section-title">Our Facilities</h2>
+                    <div class="facilities-grid">
+                        <div class="facility-card animate-fade-in">
+                            <div class="facility-image">
+                                <img src="cardio zone.jfif" alt="Cardio Zone">
+                                <div class="facility-overlay"></div>
+                            </div>
+                            <div class="facility-content">
+                                <h3>Cardio Zone</h3>
+                                <p>State-of-the-art cardio equipment including treadmills, ellipticals, and rowing machines.</p>
+                            </div>
+                        </div>
+                        <div class="facility-card animate-fade-in" style="animation-delay: 100ms;">
+                            <div class="facility-image">
+                                <img src="strength training zone.jfif" alt="Strength Training Area">
+                                <div class="facility-overlay"></div>
+                            </div>
+                            <div class="facility-content">
+                                <h3>Strength Training Area</h3>
+                                <p>Comprehensive selection of free weights, machines, and functional training equipment.</p>
+                            </div>
+                        </div>
+                        <div class="facility-card animate-fade-in" style="animation-delay: 200ms;">
+                            <div class="facility-image">
+                                <img src="group exercise.jfif" alt="Group Exercise Studios">
+                                <div class="facility-overlay"></div>
+                            </div>
+                            <div class="facility-content">
+                                <h3>Group Exercise Studios</h3>
+                                <p>Spacious studios for yoga, HIIT, spinning, and other group fitness classes.</p>
+                            </div>
+                        </div>
+                        <div class="facility-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="facility-image">
+                                <img src="recovery.jfif" alt="Recovery Zone">
+                                <div class="facility-overlay"></div>
+                            </div>
+                            <div class="facility-content">
+                                <h3>Recovery Zone</h3>
+                                <p>Dedicated area for stretching, foam rolling, and recovery with professional guidance.</p>
+                            </div>
+                        </div>
+                        <div class="facility-card animate-fade-in" style="animation-delay: 400ms;">
+                            <div class="facility-image">
+                                <img src="locker room.jfif" alt="Locker Rooms">
+                                <div class="facility-overlay"></div>
+                            </div>
+                            <div class="facility-content">
+                                <h3>Locker Rooms</h3>
+                                <p>Modern locker rooms with showers, saunas, and amenities for your comfort.</p>
+                            </div>
+                        </div>
+                        <div class="facility-card animate-fade-in" style="animation-delay: 500ms;">
+                            <div class="facility-image">
+                                <img src="nutrietion store.jfif" alt="Nutrition Bar">
+                                <div class="facility-overlay"></div>
+                            </div>
+                            <div class="facility-content">
+                                <h3>Nutrition Bar</h3>
+                                <p>Healthy snacks, protein shakes, and supplements to fuel your workout.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location -->
+            <section class="location section-padding">
+                <div class="container">
+                    <div class="two-column-grid">
+                        <div class="column-content animate-slide-right">
+                            <h2>Visit Us</h2>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h3>Main Location</h3>
+                                        <p>Gondar, Tewodros Square 200m right</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h3>Hours of Operation</h3>
+                                        <p>Monday - Friday: 5:00 AM - 11:00 PM</p>
+                                        <p>Saturday - Sunday: 7:00 AM - 9:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="programs.html" class="btn btn-primary">Our programs</a>
+                        </div>
+                        <div class="column-image animate-slide-left">
+                            <img src="https://source.unsplash.com/random/800x600/?map,gym" alt="Our location">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PROGRAMS PAGE -->
+        <div class="page" id="programs">
+            <!-- Programs Hero Section -->
+            <section class="page-hero programs-hero">
+                <div class="container">
+                    <h1 class="animate-fade-in">Our <span class="highlight">Programs</span></h1>
+                    <p class="animate-slide-up">Discover a variety of fitness programs designed to help you achieve your goals, whatever they may be.</p>
+                </div>
+            </section>
+
+            <!-- Programs Categories -->
+            <section class="program-categories section-padding">
+                <div class="container">
+                    <h2 class="section-title">Program Categories</h2>
+                    <div class="categories-grid">
+                        <div class="category-card animate-fade-in">
+                            <div class="category-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <h3>Strength Training</h3>
+                            <p>Build muscle, increase strength, and improve overall fitness.</p>
+                            <a href="#" class="btn-link">View Programs <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card animate-fade-in" style="animation-delay: 100ms;">
+                            <div class="category-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Cardio Fitness</h3>
+                            <p>Improve heart health, burn calories, and boost endurance.</p>
+                            <a href="#" class="btn-link">View Programs <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card animate-fade-in" style="animation-delay: 200ms;">
+                            <div class="category-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h3>Yoga & Flexibility</h3>
+                            <p>Enhance flexibility, balance, and mental wellbeing.</p>
+                            <a href="programs.html" class="btn-link">View Programs <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="category-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="category-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Group Classes</h3>
+                            <p>Motivating group sessions for all fitness levels.</p>
+                            <a href="programs.html" class="btn-link">View Programs <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Programs -->
+            <section class="featured-programs section-padding bg-light">
+                <div class="container">
+                    <h2 class="section-title">Featured Programs</h2>
+                    <div class="programs-detail-grid">
+                        <div class="program-detail-card animate-fade-in">
+                            <div class="program-detail-image">
+                                <img src="https://source.unsplash.com/random/800x600/?fitness,strength" alt="PowerLift: Strength Mastery">
+                            </div>
+                            <div class="program-detail-content">
+                                <h3>PowerLift: Strength Mastery</h3>
+                                <p>An intensive 8-week program designed to significantly increase strength and muscle mass. Suitable for intermediate to advanced fitness enthusiasts.</p>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>8 weeks, 3-4 sessions per week</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>60-75 minutes per session</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Small group (max 8 participants)</span>
+                                    </div>
+                                </div>
+                                <div class="program-buttons">
+                                    <a href="member" class="btn btn-primary">Enroll Now</a>
+                                    <a href="#" class="btn btn-outline">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="program-detail-card animate-fade-in" style="animation-delay: 150ms;">
+                            <div class="program-detail-image">
+                                <img src="https://source.unsplash.com/random/800x600/?fitness,cardio" alt="CardioFit: Endurance Builder">
+                            </div> 
+                            <div class="program-detail-content">
+                                <h3>CardioFit: Endurance Builder</h3>
+                                <p>A comprehensive cardio program that progressively builds endurance while burning calories. Perfect for weight loss and cardiovascular health improvement.</p>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>6 weeks, 3-5 sessions per week</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>45-60 minutes per session</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Group classes (all fitness levels)</span>
+                                    </div>
+                                </div>
+                                <div class="program-buttons">
+                                    <a href="membership.html" class="btn btn-primary">Enroll Now</a>
+                                    <a href="#" class="btn btn-outline">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="program-detail-card animate-fade-in" style="animation-delay: 300ms;">
+                            <div class="program-detail-image">
+                                <img src="https://source.unsplash.com/random/800x600/?fitness,yoga" alt="FlexFlow: Yoga Journey">
+                            </div>
+                            <div class="program-detail-content">
+                                <h3>FlexFlow: Yoga Journey</h3>
+                                <p>A holistic yoga program that improves flexibility, balance, and mental wellbeing. Includes various yoga styles from gentle to more challenging practices.</p>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>Ongoing, 2-3 sessions per week recommended</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>60 minutes per session</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Group classes (beginner to advanced)</span>
+                                    </div>
+                                </div>
+                                <div class="program-buttons">
+                                    <a href="membership.html" class="btn btn-primary">Enroll Now</a>
+                                    <a href="#" class="btn btn-outline">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="program-detail-card animate-fade-in" style="animation-delay: 450ms;">
+                            <div class="program-detail-image">
+                                <img src="https://source.unsplash.com/random/800x600/?fitness,training" alt="TotalTransform: Complete Fitness">
+                            </div>
+                            <div class="program-detail-content">
+                                <h3>TotalTransform: Complete Fitness</h3>
+                                <p>Our most comprehensive program combining strength, cardio, flexibility, and nutrition guidance for total body transformation.</p>
+                                <div class="program-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>12 weeks, 4-5 sessions per week</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>60-90 minutes per session</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>Personal training + small group</span>
+                                    </div>
+                                </div>
+                                <div class="program-buttons">
+                                    <a href="new-member-payment.html" class="btn btn-primary">Enroll Now</a>
+                                    <a href="#" class="btn btn-outline">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Class Schedule -->
+            <section class="class-schedule section-padding">
+                <div class="container">
+                    <h2 class="section-title">Weekly Class Schedule</h2>
+                    <div class="schedule-container">
+                        <div class="schedule-table-wrapper">
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                        <th>Saturday</th>
+                                        <th>Sunday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="time-cell">6:00 AM</td>
+                                        <td>HIIT</td>
+                                        <td>Yoga</td>
+                                        <td>Spin</td>
+                                        <td>Strength</td>
+                                        <td>HIIT</td>
+                                        <td>Yoga</td> 
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-cell">8:00 AM</td>
+                                        <td>Strength</td>
+                                        <td>Cardio</td>
+                                        <td>Yoga</td>
+                                        <td>HIIT</td>
+                                        <td>Strength</td>
+                                        <td>Cardio</td>
+                                        <td>Yoga</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-cell">10:00 AM</td>
+                                        <td>Cardio</td>
+                                        <td>Strength</td>
+                                        <td>HIIT</td>
+                                        <td>Yoga</td>
+                                        <td>Cardio</td>
+                                        <td>HIIT</td>
+                                        <td>Strength</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-cell">5:00 PM</td>
+                                        <td>Yoga</td>
+                                        <td>HIIT</td>
+                                        <td>Strength</td>
+                                        <td>Cardio</td>
+                                        <td>Yoga</td>
+                                        <td>Strength</td>
+                                        <td>Cardio</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-cell">7:00 PM</td>
+                                        <td>HIIT</td>
+                                        <td>Strength</td>
+                                        <td>Cardio</td>
+                                        <td>Strength</td>
+                                        <td>HIIT</td>
+                                        <td>Yoga</td>
+                                        <td>Yoga</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="schedule-note">
+                            <p>Class schedule is subject to change. Please check with the front desk or our mobile app for the most up-to-date information.</p>
+                            <a href="#" class="btn btn-primary">Book a Class</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Training -->
+            <section class="personal-training section-padding bg-light">
+                <div class="container">
+                    <div class="two-column-grid">
+                        <div class="column-image animate-slide-right">
+                            <img src="https://source.unsplash.com/random/800x600/?fitness,trainer" alt="Personal Training">
+                        </div>
+                        <div class="column-content animate-slide-left">
+                            <h2>Personal Training</h2>
+                            <p>Take your fitness journey to the next level with our expert personal trainers. Our certified professionals will create a customized program tailored to your specific goals, whether you're looking to lose weight, build muscle, improve athletic performance, or enhance overall fitness.</p>
+                            <p>Personal training sessions include:</p>
+                            <ul class="check-list">
+                                <li><i class="fas fa-check-circle"></i> Initial fitness assessment and goal setting</li>
+                                <li><i class="fas fa-check-circle"></i> Customized workout programs</li>
+                                <li><i class="fas fa-check-circle"></i> Nutritional guidance and meal planning</li>
+                                <li><i class="fas fa-check-circle"></i> Regular progress tracking and program adjustments</li>
+                                <li><i class="fas fa-check-circle"></i> Motivation and accountability</li>
+                            </ul>
+                            <div class="button-group">
+                                <a href="#" class="btn btn-primary">Schedule a Consultation</a>
+                                <a href="#" class="btn btn-outline">View Pricing</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAYMENT PAGE -->
+        <div class="page" id="payment">
+            <!-- Payment Hero Section -->
+            <section class="page-hero payment-hero">
+                <div class="container">
+                    <h1 class="animate-fade-in">Membership <span class="highlight">Plans</span></h1>
+                    <p class="animate-slide-up">Choose the perfect plan to kickstart your fitness journey</p>
+                </div>
+            </section>
+
+            <!-- Membership Plans -->
+            <section class="membership-plans section-padding">
+                <div class="container">
+                    <div class="plan-tabs">
+                        <div class="tab-header">
+                            <button class="tab-btn active" data-tab="monthly">Monthly</button>
+                            <button class="tab-btn" data-tab="annual">Annual (Save 15%)</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="monthly-tab">
+                            <div class="plans-grid">
+                                <div class="plan-card animate-fade-in">
+                                    <div class="plan-header">
+                                        <h3>Basic</h3>
+                                        <div class="plan-price">
+                                            <span class="price">$49.99</span>
+                                            <span class="period">/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <ul class="check-list">
+                                            <li><i class="fas fa-check-circle"></i> Access to gym equipment</li>
+                                            <li><i class="fas fa-check-circle"></i> Locker room access</li>
+                                            <li><i class="fas fa-check-circle"></i> Fitness assessment</li>
+                                        </ul>
+                                    </div>
+                                    <div class="plan-footer">
+                                        <button class="btn btn-outline btn-block select-plan-btn" data-plan="Basic" data-price="49.99" data-period="monthly" onclick="window.location.href='new-member-payment.html'">Select Plan</button>
+                                    </div>
+                                </div>
+                                <div class="plan-card popular animate-fade-in" style="animation-delay: 150ms;">
+                                    <div class="popular-tag">MOST POPULAR</div>
+                                    <div class="plan-header">
+                                        <h3>Standard</h3>
+                                        <div class="plan-price">
+                                            <span class="price">$79.99</span>
+                                            <span class="period">/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <ul class="check-list">
+                                            <li><i class="fas fa-check-circle"></i> All Basic features</li>
+                                            <li><i class="fas fa-check-circle"></i> Group classes</li>
+                                            <li><i class="fas fa-check-circle"></i> Fitness app access</li>
+                                            <li><i class="fas fa-check-circle"></i> Nutritional consultation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="plan-footer">
+                                        <button class="btn btn-primary btn-block select-plan-btn" data-plan="Standard" data-price="79.99" data-period="monthly" onclick="window.location.href='new-member-payment.html'">Select Plan</button>
+                                    </div>
+                                </div>
+                                <div class="plan-card animate-fade-in" style="animation-delay: 300ms;">
+                                    <div class="plan-header">
+                                        <h3>Premium</h3>
+                                        <div class="plan-price">
+                                            <span class="price">$129.99</span>
+                                            <span class="period">/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <ul class="check-list">
+                                            <li><i class="fas fa-check-circle"></i> All Standard features</li>
+                                            <li><i class="fas fa-check-circle"></i> Personal training (2x/month)</li>
+                                            <li><i class="fas fa-check-circle"></i> Sauna & spa access</li>
+                                            <li><i class="fas fa-check-circle"></i> Priority booking</li>
+                                        </ul>
+                                    </div>
+                                    <div class="plan-footer">
+                                        <button class="btn btn-outline btn-block select-plan-btn" data-plan="Premium" data-price="129.99" data-period="monthly" onclick="window.location.href='new-member-payment.html'">Select Plan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="annual-tab">
+                            <div class="plans-grid">
+                                <div class="plan-card animate-fade-in">
+                                    <div class="plan-header">
+                                        <h3>Basic</h3>
+                                        <div class="plan-price">
+                                            <span class="price">$499.99</span>
+                                            <span class="period">/year</span>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <ul class="check-list">
+                                            <li><i class="fas fa-check-circle"></i> Access to gym equipment</li>
+                                            <li><i class="fas fa-check-circle"></i> Locker room access</li>
+                                            <li><i class="fas fa-check-circle"></i> Fitness assessment</li>
+                                        </ul>
+                                    </div>
+                                    <div class="plan-footer">
+                                        <button class="btn btn-outline btn-block select-plan-btn" data-plan="Basic" data-price="499.99" data-period="annual" onclick="window.location.href='new-member-payment.html'">Select Plan</button>
+                                    </div>
+                                </div>
+                                <div class="plan-card popular animate-fade-in" style="animation-delay: 150ms;">
+                                    <div class="popular-tag">MOST POPULAR</div>
+                                    <div class="plan-header">
+                                        <h3>Standard</h3>
+                                        <div class="plan-price">
+                                            <span class="price">$799.99</span>
+                                            <span class="period">/year</span>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <ul class="check-list">
+                                            <li><i class="fas fa-check-circle"></i> All Basic features</li>
+                                            <li><i class="fas fa-check-circle"></i> Group classes</li>
+                                            <li><i class="fas fa-check-circle"></i> Fitness app access</li>
+                                            <li><i class="fas fa-check-circle"></i> Nutritional consultation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="plan-footer">
+                                        <button class="btn btn-primary btn-block select-plan-btn" data-plan="Standard" data-price="799.99" data-period="annual" onclick="window.location.href='new-member-payment.html'">Select Plan</button>
+                                    </div>
+                                </div>
+                                <div class="plan-card animate-fade-in" style="animation-delay: 300ms;">
+                                    <div class="plan-header">
+                                        <h3>Premium</h3>
+                                        <div class="plan-price">
+                                            <span class="price">$1299.99</span>
+                                            <span class="period">/year</span>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <ul class="check-list">
+                                            <li><i class="fas fa-check-circle"></i> All Standard features</li>
+                                            <li><i class="fas fa-check-circle"></i> Personal training (2x/month)</li>
+                                            <li><i class="fas fa-check-circle"></i> Sauna & spa access</li>
+                                            <li><i class="fas fa-check-circle"></i> Priority booking</li>
+                                        </ul>
+                                    </div>
+                                    <div class="plan-footer">
+                                        <button class="btn btn-outline btn-block select-plan-btn" data-plan="Premium" data-price="1299.99" data-period="annual" onclick="window.location.href='new-member-payment.html'">Select Plan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payment Process -->
+            <section class="payment-process section-padding bg-light">
+                <div class="container">
+                    <div class="payment-container">
+                        <div class="payment-steps">
+                            <div class="step active" data-step="1">
+                                <div class="step-number">1</div>
+                                <div class="step-label">Personal Info</div>
+                            </div>
+                            <div class="step" data-step="2">
+                                <div class="step-number">2</div>
+                                <div class="step-label">Payment</div>
+                            </div>
+                            <div class="step" data-step="3">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Confirmation</div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="payment-form-container">
+                            <!-- Step 1: Personal Information -->
+                            <div class="payment-form active" id="step-1-form">
+                                <h3>Personal Information</h3>
+                                <p>Please provide your contact information</p>
+                                <form id="personal-info-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <div class="input-icon">
+                                                <i class="fas fa-user"></i>
+                                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <div class="input-icon">
+                                                <i class="fas fa-user"></i>
+                                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-envelope"></i>
+                                            <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-phone"></i>
+                                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Membership Plan</label>
+                                        <div class="selected-plan">
+                                            <div class="plan-info">
+                                                <h4 id="selected-plan-name">Standard</h4>
+                                                <p id="selected-plan-price">$79.99/month</p>
+                                            </div>
+                                            <button type="button" class="btn btn-sm btn-outline" id="change-plan-btn">Change</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions"> 
+                                        <button type="button" class="btn btn-primary btn-block" id="to-payment-btn">Continue to Payment</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Step 2: Payment Details -->
+                            <div class="payment-form" id="step-2-form">
+                                <h3>Payment Details</h3>
+                                <p>Enter your payment details securely</p>
+                                <form id="payment-details-form">
+                                    <div class="form-group">
+                                        <label for="cardNumber">Card Number</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-credit-card"></i>
+                                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardName">Name on Card</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" id="cardName" name="cardName" placeholder="John Doe" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="expiryDate">Expiry Date</label>
+                                            <div class="input-icon">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cvv">CVV</label>
+                                            <div class="input-icon">
+                                                <i class="fas fa-lock"></i>
+                                                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="payment-summary">
+                                        <h4>Payment Summary</h4>
+                                        <div class="summary-item">
+                                            <span id="summary-plan">Standard Plan (monthly)</span>
+                                            <span id="summary-plan-price">$79.99</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span>Registration Fee</span>
+                                            <span>$49.99</span>
+                                        </div>
+                                        <div class="summary-total">
+                                            <span>Total</span>
+                                            <span id="summary-total">$129.98</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-outline" id="back-to-info-btn">Back</button>
+                                        <button type="button" class="btn btn-primary" id="complete-payment-btn">Complete Payment</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Step 3: Confirmation -->
+                            <div class="payment-form" id="step-3-form">
+                                <div class="confirmation">
+                                    <div class="confirmation-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <h3>Thank You!</h3>
+                                    <p>Your membership has been successfully activated. You can now enjoy all the benefits of your Standard Plan.</p>
+                                    <div class="membership-details">
+                                        <h4>Membership Details</h4>
+                                        <div class="detail-row">
+                                            <span>Membership ID</span>
+                                            <span id="membership-id">PF-123456</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Plan</span>
+                                            <span id="membership-plan">Standard</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Billing Cycle</span>
+                                            <span id="membership-cycle">Monthly</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Next Billing Date</span>
+                                            <span id="next-billing-date">June 4, 2025</span>
+                                        </div>
+                                    </div>
+                                    <p class="confirmation-email">A confirmation email has been sent to <span id="confirmation-email">your email address</span> with all the details.</p>
+                                    <div class="form-actions">
+                                        <a href="#home" class="btn btn-primary btn-block nav-link" data-page="home">Return to Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- LOGIN PAGE -->
+        <div class="page" id="login">
+            <div class="login-container">
+                <div class="login-image">
+                    <img src="https://source.unsplash.com/random/1200x800/?fitness,gym" alt="Fitness background">
+                    <div class="login-image-overlay">
+                        <div class="login-image-content">
+                            <h1><span class="highlight">POWER</span>FIT</h1>
+                            <p>Join our community and transform your fitness journey today</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form-container">
+                    <div class="login-tabs">
+                        <div class="login-tab-header">
+                            <button class="login-tab-btn active" data-tab="login-tab">Login</button>
+                            <button class="login-tab-btn" data-tab="register-tab">Register</button>
+                        </div>
+                        
+                        <div class="login-tab-content active" id="login-tab">
+                            <form id="login-form">
+                                <div class="form-group">
+                                    <label for="login-email">Email</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="login-email" name="email" placeholder="john.doe@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="password-label">
+                                        <label for="login-password">Password</label>
+                                        <a href="#" class="forgot-password">Forgot password?</a>
+                                    </div>
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="login-password" name="password" placeholder="••••••••" required>
+                                        <button type="button" class="password-toggle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="remember" name="remember">
+                                    <label for="remember">Remember me for 30 days</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            </form>
+                        </div>
+                        
+                        <div class="login-tab-content" id="register-tab">
+                            <form id="register-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" id="register-firstName" name="firstName" placeholder="John" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" id="register-lastName" name="lastName" placeholder="Doe" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-email">Email</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="register-email" name="email" placeholder="john.doe@example.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="register-password">Password</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="register-password" name="password" placeholder="••••••••" required>
+                                        <button type="button" class="password-toggle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm Password</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                            </form>
+                        </div>
+                        
+                        <div class="social-login">
+                            <div class="divider">
+                                <span>Or continue with</span>
+                            </div>
+                            <div class="social-buttons">
+                                <button class="btn btn-outline social-btn">
+                                    <i class="fab fa-google"></i>
+                                    Google
+                                </button>
+                                <button class="btn btn-outline social-btn">
+                                    <i class="fab fa-facebook-f"></i>
+                                    Facebook
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECREATION PAGE -->
+        <div class="page" id="recreation">
+            <!-- Recreation Hero Section -->
+            <section class="page-hero recreation-hero">
+                <div class="container">
+                    <h1 class="animate-fade-in">Recreation <span class="highlight">Activities</span></h1>
+                    <p class="animate-slide-up">Discover fun and engaging activities beyond your regular workout routine</p>
+                </div>
+            </section>
+
+          <!-- Activities Tabs -->
+<section class="activities-tabs section-padding">
+    <div class="container">
+        <div class="tabs">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="sports">Sports</button>
+                <button class="tab-btn" data-tab="events">Events</button>
+                <button class="tab-btn" data-tab="competitions">Competitions</button>
+                <button class="tab-btn" data-tab="wellness">Wellness</button>
+            </div>
+            
+            <div class="tabs-content active" id="sports-tab">
+                <div class="activities-grid">
+                    <div class="activity-card animate-fade-in">
+                        <div class="activity-image">
+                            <img src="basket%20ball.jfif" alt="Basketball League">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Basketball League</h3>
+                            <p>Join our recreational basketball league for all skill levels. Weekly games and tournaments.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Tuesdays &amp; Thursdays</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>7:00 PM - 9:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Teams of 5-8 players</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Join Activity</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 100ms;">
+                        <div class="activity-image">
+                            <img src="indor%20soccer.jfif" alt="Indoor Soccer">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Indoor Soccer</h3>
+                            <p>Fast-paced indoor soccer games in our climate-controlled facility. All ages welcome.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Mondays &amp; Wednesdays</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>6:00 PM - 8:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Teams of 6-10 players</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Join Activity</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 200ms;">
+                        <div class="activity-image">
+                            <img src="volleyball.jfif" alt="Volleyball Club">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Volleyball Club</h3>
+                            <p>Casual and competitive volleyball sessions for beginners and experienced players alike.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Fridays</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>5:00 PM - 7:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Open play, all welcome</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Join Activity</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tabs-content" id="events-tab">
+                <div class="activities-grid">
+                    <div class="activity-card animate-fade-in">
+                        <div class="activity-image">
+                            <img src="group.jfif" alt="Fitness Challenge Weekend">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Fitness Challenge Weekend</h3>
+                            <p>A weekend of fun fitness challenges, competitions, and prizes for all fitness levels.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>June 10-11, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Main Gym &amp; Outdoor Area</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Register for Event</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 100ms;">
+                        <div class="activity-image">
+                            <img src="nutrients.jfif" alt="Nutrition Workshop">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Nutrition Workshop</h3>
+                            <p>Learn about proper nutrition for fitness and overall health from our expert nutritionists.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>May 20, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>  
+                                    <span>6:00 PM - 8:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Conference Room</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Register for Event</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 200ms;">
+                        <div class="activity-image">
+                            <img src="fam fit.jfif" alt="Family Fitness Day">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Family Fitness Day</h3>
+                            <p>A day of family-friendly activities, games, and fitness challenges for all ages.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>July 15, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10:00 AM - 3:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>All Facilities</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Register for Event</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tabs-content" id="competitions-tab">
+                <div class="activities-grid">
+                    <div class="activity-card animate-fade-in">
+                        <div class="activity-image">
+                            <img src="weight.crossfit ・・・ Dare to challenge…”" alt="PowerLift Championship">
+                        </div>
+                        <div class="activity-content">
+                            <h3>PowerLift Championship</h3>
+                            <p>Test your strength in our annual powerlifting competition with multiple weight categories.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>July 22, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10:00 AM - 4:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Prizes for each category</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Register to Compete</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 100ms;">
+                        <div class="activity-image">
+                            <img src="crossfit.jfif" alt="CrossFit Challenge">
+                        </div>
+                        <div class="activity-content">
+                            <h3>CrossFit Challenge</h3>
+                            <p>A high-intensity functional fitness competition testing strength, endurance, and agility.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>August 15, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>9:00 AM - 3:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Individual &amp; team categories</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Register to Compete</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 200ms;">
+                        <div class="activity-image">
+                            <img src="maraton.jfif" alt="Marathon Prep Race">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Marathon Prep Race</h3>
+                            <p>A 10K race to help prepare for upcoming marathons, with professional timing and support.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>September 10, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>7:00 AM Start</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Age group awards</span>
+                                </div>
+                            </div>
+                            <a href="donate.html" class="btn btn-primary btn-block">Register to Compete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tabs-content" id="wellness-tab">
+                <div class="activities-grid">
+                    <div class="activity-card animate-fade-in">
+                        <div class="activity-image">
+                            <img src="theraphy.jfif" alt="Massage Therapy">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Massage Therapy</h3>
+                            <p>Professional massage services to help with recovery, stress relief, and muscle tension.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>By appointment</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Licensed therapists</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Multiple techniques available</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-block">Book Session</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 100ms;">
+                        <div class="activity-image">
+                            <img src="steam.jfif" alt="Sauna &amp; Steam Room">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Sauna &amp; Steam Room</h3>
+                            <p>Relax and recover in our state-of-the-art sauna and steam room facilities.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>During gym hours</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Members only</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Health benefits for recovery</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-block">Book Session</a>
+                        </div>
+                    </div>
+                    <div class="activity-card animate-fade-in" style="animation-delay: 200ms;">
+                        <div class="activity-image">
+                            <img src="meditation.png" alt="Meditation Classes">
+                        </div>
+                        <div class="activity-content">
+                            <h3>Meditation Classes</h3>
+                            <p>Guided meditation sessions to improve mental wellbeing, focus, and stress management.</p>
+                            <div class="activity-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Tuesdays &amp; Thursdays</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>7:00 PM - 8:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>All experience levels</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-block">Book Session</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <!-- Events Calendar -->
+            <section class="events-calendar section-padding bg-light">
+                <div class="container">
+                    <h2 class="section-title">Upcoming Events Calendar</h2>
+                    <div class="calendar-container">
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Event</th>
+                                    <th>Time</th>
+                                    <th>Location</th>
+                                    <th>Registration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>May 15, 2025</td>
+                                    <td>Yoga in the Park</td>
+                                    <td>8:00 AM - 9:30 AM</td>
+                                    <td>City Park</td>
+                                    <td><span class="status open">Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td>May 20, 2025</td>
+                                    <td>Nutrition Workshop</td>
+                                    <td>6:00 PM - 8:00 PM</td>
+                                    <td>Conference Room</td>
+                                    <td><span class="status limited">Limited Spots</span></td>
+                                </tr>
+                                <tr>
+                                    <td>May 30, 2025</td>
+                                    <td>Obstacle Course Race</td>
+                                    <td>10:00 AM - 2:00 PM</td>
+                                    <td>Outdoor Area</td>
+                                    <td><span class="status closing">Closing Soon</span></td>
+                                </tr>
+                                <tr>
+                                    <td>June 10-11, 2025</td>
+                                    <td>Fitness Challenge Weekend</td>
+                                    <td>9:00 AM - 5:00 PM</td>
+                                    <td>Main Gym</td>
+                                    <td><span class="status open">Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td>June 18, 2025</td>
+                                    <td>Swimming Competition</td>
+                                    <td>1:00 PM - 5:00 PM</td>
+                                    <td>Pool Area</td>
+                                    <td><span class="status open">Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td>July 15, 2025</td>
+                                    <td>Family Fitness Day</td>
+                                    <td>10:00 AM - 3:00 PM</td>
+                                    <td>All Facilities</td>
+                                    <td><span class="status open">Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td>July 22, 2025</td>
+                                    <td>PowerLift Championship</td>
+                                    <td>10:00 AM - 4:00 PM</td>
+                                    <td>Strength Zone</td>
+                                    <td><span class="status closing">Closing Soon</span></td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <!-- Community Spotlight -->
+            <section class="community-spotlight section-padding">
+                <div class="container">
+                    <h2 class="section-title">Community Spotlight</h2>
+                    <div class="two-column-grid">
+                        <div class="column-image animate-slide-right">
+                            <img src="spot.jfif" alt="Community Spotlight">
+                        </div>
+                        <div class="column-content animate-slide-left">
+                            <h3>PowerFit Community Challenge</h3>
+                            <p>Last month, our PowerFit community came together for our quarterly fitness challenge, raising over $1,500 for local charities while pushing their fitness boundaries. Over 100 members participated in various events including a 5K run, strength competitions, and team challenges.</p>
+                            <p>Special congratulations to our top performers:</p>
+                            <ul class="trophy-list">
+                                <li><i class="fas fa-trophy"></i> <strong>Henok Ayenew</strong> - Most funds raised ($50)</li>
+                                <li><i class="fas fa-trophy"></i> <strong>Abel Fisseha</strong> - Overall fitness challenge winner</li>
+                                <li><i class="fas fa-trophy"></i> <strong>Tewodros Circus</strong> - Team challenge champions</li>
+                            </ul>
+                            <p>Join us for our next community event and be part of something bigger than fitness. Check the events calendar for upcoming opportunities to participate and give back.</p>
+                            <a href="donate.html" class="btn btn-primary">Join the Next Challenge</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>POWER<span class="highlight">FIT</span></span>
+                    </div>
+                    <p>Empowering individuals to achieve their fitness goals in a supportive and motivating environment since 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">About Us</a></li>
+                        <li><a href="programs.html" >Programs</a></li>
+                        <li><a href="#recreation" class="nav-link" data-page="recreation">Recreation</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="#login" class="nav-link" data-page="login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Gondar, Tewodros Square</li>
+                        <li><i class="fas fa-phone"></i> (+251960122121)</li>
+                        <li><i class="fas fa-envelope"></i> info@powerfit.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 5:00 AM - 11:00 PM<br>Sat-Sun: 7:00 AM - 9:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates, promotions, and fitness tips.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <p class="form-note">We respect your privacy. Unsubscribe at any time.</p>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> PowerFit Gym. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="newGym.js"></script>
+</body>
+</html>

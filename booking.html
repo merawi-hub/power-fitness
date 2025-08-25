@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Fit Booking</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <section class="booking-section">
+        <div class="container">
+            <h1 class="glow-text">Welcome to Power Fit!</h1>
+            <p class="heart-text">Your fitness journey begins here. Book your session and let's achieve greatness together!</p>
+            <button class="join-btn" onclick="window.location.href='#join'">Join Power Fit</button>
+
+            <div class="booking-form">
+                <h2>Book Your Session</h2>
+
+                <label for="main-service">Choose Main Service:</label>
+                <select id="main-service">
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="personal">Personal Training</option>
+                    <option value="group">Group Classes</option>
+                    <option value="nutrition">Nutrition Plans</option>
+                </select>
+
+                <div id="sub-services-container">
+                    <!-- Sub-services will be populated dynamically -->
+                </div>
+
+                <label for="appointment">Choose Appointment:</label>
+                <select id="appointment">
+                    <option value="" disabled selected>Select Time</option>
+                    <option value="24hours">Next 24 Hours</option>
+                    <option value="week">Next Week</option>
+                </select>
+
+                <label for="contact">Preferred Contact:</label>
+                <select id="contact">
+                    <option value="" disabled selected>Select Contact</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="tg">Telegram</option>
+                    <option value="ig">Instagram</option>
+                </select>
+
+                <button id="book-btn">Book Now</button>
+
+                <div id="confirmation" class="confirmation"></div>
+
+                <div class="policies">
+                    <h3>Service Policies:</h3>
+                    <ul>
+                        <li>Arrive 10 minutes before your session.</li>
+                        <li>Bring appropriate workout attire.</li>
+                        <li>Cancellations must be made 6 hours in advance.</li>
+                        <li>Respect other members and trainers.</li>
+                        <li>Enjoy your fitness journey and come back stronger!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="booking.js"></script>
+</body>
+</html>

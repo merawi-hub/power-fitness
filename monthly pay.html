@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit - New Member Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff5722;
+            --primary-dark: #e64a19;
+            --primary-light: #ffccbc;
+            --secondary: #2196f3;
+            --secondary-dark: #1976d2;
+            --secondary-light: #bbdefb;
+            --success: #4caf50;
+            --success-dark: #388e3c;
+            --success-light: #c8e6c9;
+            --warning: #ff9800;
+            --warning-dark: #f57c00;
+            --warning-light: #ffe0b2;
+            --danger: #f44336;
+            --danger-dark: #d32f2f;
+            --danger-light: #ffcdd2;
+            --dark: #212121;
+            --gray-dark: #616161;
+            --gray: #9e9e9e;
+            --gray-light: #e0e0e0;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--gray-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .payment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .payment-summary {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .summary-label {
+            color: var(--gray-dark);
+        }
+
+        .summary-value {
+            font-weight: 500;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .membership-details {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .membership-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .membership-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .membership-label {
+            color: var(--gray-dark);
+        }
+
+        .membership-value {
+            font-weight: 500;
+        }
+
+        .payment-form-container {
+            flex: 2;
+            min-width: 500px;
+        }
+
+        .payment-form {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+        }
+
+        .form-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .payment-method input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .payment-method label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background-color: var(--light);
+            border: 2px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method input[type="radio"]:checked + label {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .payment-method-icon {
+            font-size: 1.8rem;
+            color: var(--gray-dark);
+        }
+
+        .payment-method input[type="radio"]:checked + label .payment-method-icon {
+            color: var(--primary);
+        }
+
+        .payment-method-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--gray-dark);
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .form-control.error {
+            border-color: var(--danger);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            color: var(--gray-dark);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger-dark);
+        }
+
+        .payment-section {
+            display: none;
+        }
+
+        .payment-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Receipt Styles */
+        .receipt {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .receipt.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .receipt-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .receipt-logo img {
+            height: 60px;
+        }
+
+        .receipt-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .receipt-info {
+            text-align: right;
+        }
+
+        .receipt-number {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .receipt-date {
+            color: var(--gray-dark);
+        }
+
+        .receipt-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .receipt-section {
+            margin-bottom: 25px;
+        }
+
+        .receipt-section-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .receipt-label {
+            color: var(--gray-dark);
+        }
+
+        .receipt-value {
+            font-weight: 500;
+        }
+
+        .receipt-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .receipt-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+            text-align: center;
+        }
+
+        .receipt-message {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .receipt-note {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .receipt-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--success-dark);
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 25px;
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .loading-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Crypto Selection Styles */
+        .crypto-options {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .crypto-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .crypto-option input[type="radio"] {
+            margin: 0;
+        }
+
+        .crypto-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+
+        .crypto-name {
+            font-size: 0.9rem;
+        }
+
+        /* Gym Policies Section */
+        .gym-policies {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .policies-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .policies-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .policies-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .policies-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Post-payment actions */
+        .post-payment-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Welcome message for new members */
+        .welcome-message {
+            background-color: var(--success-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--success);
+            display: none;
+        }
+
+        .welcome-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .welcome-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--success-dark);
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .welcome-benefits {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .welcome-benefits li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .welcome-benefits i {
+            color: var(--success);
+            margin-top: 3px;
+        }
+
+        /* Transaction History Styles */
+        .transaction-history-container {
+            margin-bottom: 30px;
+        }
+
+        .transaction-history-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .transaction-history {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            display: none;
+        }
+
+        .transaction-history.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .history-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+            color: var(--primary);
+        }
+
+        .no-transactions {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray-dark);
+            font-style: italic;
+        }
+
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transaction-table th,
+        .transaction-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .transaction-table th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--gray-dark);
+        }
+
+        .transaction-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .transaction-table tr:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .payment-container {
+                flex-direction: column-reverse;
+            }
+
+            .payment-summary {
+                position: static;
+            }
+
+            .payment-form-container {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .payment-methods {
+                flex-wrap: wrap;
+            }
+
+            .payment-method {
+                min-width: calc(50% - 10px);
+            }
+
+            .receipt-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .receipt-info {
+                text-align: center;
+            }
+
+            .receipt-actions {
+                flex-direction: column;
+            }
+
+            .crypto-options {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .post-payment-actions {
+                flex-direction: column;
+            }
+
+            .transaction-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .transaction-table th,
+            .transaction-table td {
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-group {
+                min-width: 100%;
+            }
+
+            .payment-method {
+                min-width: 100%;
+            }
+
+            .crypto-options {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .transaction-history-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .receipt, .receipt * {
+                visibility: visible;
+            }
+
+            .receipt {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+
+            .receipt-actions {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-dumbbell" style="font-size: 24px; color: var(--primary);"></i>
+                    <span class="logo-text">POWER<span style="color: var(--primary-dark);">FITNESS</span></span>
+                </a>
+                <div>
+                    <a href="index.html" 
+                        class="fas fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Complete Your Membership Registration</h1>
+
+            <!-- Transaction History Buttons -->
+            <div class="transaction-history-buttons">
+                <button class="btn btn-secondary" id="viewHistoryBtn">
+                    <i class="fas fa-history"></i> View History
+                </button>
+                <button class="btn btn-danger" id="clearHistoryBtn" style="display: none;">
+                    <i class="fas fa-trash"></i> Clear History
+                </button>
+            </div>
+
+            <!-- Transaction History Section -->
+            <div class="transaction-history" id="transactionHistory">
+                <h2 class="history-title">Transaction History</h2>
+                <div id="transactionTableContainer">
+                    <div class="no-transactions" id="noTransactions">
+                        <p>No transaction history available.</p>
+                    </div>
+                    <table class="transaction-table" id="transactionTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Plan</th>
+                                <th>Payment Method</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            <!-- Transaction rows will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Welcome Message for New Members -->
+            <div class="welcome-message" id="welcomeMessage">
+                <h2 class="welcome-title">Welcome to PowerFit!</h2>
+                <p class="welcome-text">Thank you for choosing us as your fitness partner. Your registration has been completed successfully!</p>
+                <div class="welcome-benefits">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <span>Your membership is now active and you can start using our facilities right away.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Your membership card will be available at the front desk on your first visit.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>You now have access to our mobile app - download it to book classes and track your progress.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>A welcome email has been sent with all the details of your membership.</span></li>
+                    </ul>
+                </div>
+                <p class="welcome-text">We're excited to be part of your fitness journey!</p>
+                <div class="post-payment-actions">
+                    <a href="new Gym.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Return to Home
+                    </a>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2 class="success-title">Registration Successful!</h2>
+                <p class="success-text">Your membership has been activated successfully. You can now access all gym facilities.</p>
+                <p class="success-text">A confirmation email has been sent to your email address with all the details.</p>
+                <div style="margin-top: 30px;">
+                    <button class="btn" id="viewReceiptBtn">
+                        <i class="fas fa-receipt"></i> View Receipt
+                    </button>
+                    <button class="btn btn-secondary" id="backToPaymentFormBtn" style="margin-left: 15px;">
+                        <i class="fas fa-arrow-left"></i> Back to Form
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Container -->
+            <div class="payment-container" id="paymentContainer">
+                <!-- Payment Summary -->
+                <div class="payment-summary">
+                    <h2 class="summary-title">Registration Summary</h2>
+                    <div class="summary-item">
+                        <span class="summary-label">Membership Plan:</span>
+                        <span class="summary-value" id="summaryPlan">Standard Monthly</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Duration:</span>
+                        <span class="summary-value" id="summaryDuration">1 Month</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Base Price:</span>
+                        <span class="summary-value" id="summaryBasePrice">$79.99</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Registration Fee:</span>
+                        <span class="summary-value" id="summaryRegFee">$49.99</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Tax (7%):</span>
+                        <span class="summary-value" id="summaryTax">$9.10</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="summaryTotal">$139.08</span>
+                    </div>
+
+                    <div class="membership-details">
+                        <h3 class="membership-title">Standard Monthly Membership</h3>
+                        <div class="membership-info">
+                            <span class="membership-label">Start Date:</span>
+                            <span class="membership-value" id="membershipStart">May 6, 2025</span>
+                        </div>
+                        <div class="membership-info">
+                            <span class="membership-label">End Date:</span>
+                            <span class="membership-value" id="membershipEnd">June 6, 2025</span>
+                        </div>
+                        <div class="membership-info">
+                            <span class="membership-label">Auto-Renewal:</span>
+                            <span class="membership-value">Yes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="payment-form-container">
+                    <div class="payment-form">
+                        <h2 class="form-title">Registration Information</h2>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="creditCard" value="creditCard" checked>
+                                <label for="creditCard">
+                                    <i class="fas fa-credit-card payment-method-icon"></i>
+                                    <span class="payment-method-name">Credit Card</span>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="paypal" value="paypal">
+                                <label for="paypal">
+                                    <i class="fab fa-paypal payment-method-icon"></i>
+                                    <span class="payment-method-name">PayPal</span>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
+                                <label for="bankTransfer">
+                                    <i class="fas fa-university payment-method-icon"></i>
+                                    <span class="payment-method-name">Bank Transfer</span>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="applePay" value="applePay">
+                                <label for="applePay">
+                                    <i class="fab fa-apple-pay payment-method-icon"></i>
+                                    <span class="payment-method-name">Apple Pay</span>
+                                </label>
+                            </div>
+                            <!-- Pay at Gym House -->
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="payAtGym" value="payAtGym">
+                                <label for="payAtGym">
+                                    <i class="fas fa-store payment-method-icon"></i>
+                                    <span class="payment-method-name">Pay at Gym</span>
+                                </label>
+                            </div>
+                            <!-- Cryptocurrency -->
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="crypto" value="crypto">
+                                <label for="crypto">
+                                    <i class="fab fa-bitcoin payment-method-icon"></i>
+                                    <span class="payment-method-name">Cryptocurrency</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card Section -->
+                        <div class="payment-section active" id="creditCardSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Card Information</h3>
+                                <div class="card-icons">
+                                    <i class="fab fa-cc-visa card-icon"></i>
+                                    <i class="fab fa-cc-mastercard card-icon"></i>
+                                    <i class="fab fa-cc-amex card-icon"></i>
+                                    <i class="fab fa-cc-discover card-icon"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardNumber" class="form-label">Card Number</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-credit-card"></i>
+                                        <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                                        <div class="error-message" id="cardNumberError">Please enter a valid card number</div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiryDate" class="form-label">Expiry Date</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" maxlength="5">
+                                            <div class="error-message" id="expiryDateError">Please enter a valid expiry date</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv" class="form-label">CVV</label>
+                                        <div class="input-icon">
+                                            <i class="fas fa-lock"></i>
+                                            <input type="text" id="cvv" class="form-control" placeholder="123" maxlength="4">
+                                            <div class="error-message" id="cvvError">Please enter a valid CVV</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardName" class="form-label">Name on Card</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="cardName" class="form-control" placeholder="John Doe">
+                                        <div class="error-message" id="cardNameError">Please enter the name on your card</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PayPal Section -->
+                        <div class="payment-section" id="paypalSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">PayPal Information</h3>
+                                <p style="margin-bottom: 15px;">You will be redirected to PayPal to complete your payment securely.</p>
+                                <div class="form-group">
+                                    <label for="paypalEmail" class="form-label">PayPal Email</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="paypalEmail" class="form-control" placeholder="your-email@example.com">
+                                        <div class="error-message" id="paypalEmailError">Please enter a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfer Section -->
+                        <div class="payment-section" id="bankTransferSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Bank Transfer Information</h3>
+                                <p style="margin-bottom: 15px;">Please use the following details to make your bank transfer:</p>
+                                <div class="form-group">
+                                    <label class="form-label">Bank Name</label>
+                                    <input type="text" class="form-control" value="PowerFit Bank" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Account Name</label>
+                                    <input type="text" class="form-control" value="PowerFit Gym LLC" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Account Number</label>
+                                    <input type="text" class="form-control" value="1234567890" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Routing Number</label>
+                                    <input type="text" class="form-control" value="987654321" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Reference</label>
+                                    <input type="text" class="form-control" value="REG-2025-12345" readonly>
+                                </div>
+                                <p style="margin-top: 15px; color: var(--warning-dark);">
+                                    <i class="fas fa-info-circle"></i> Please include the reference number in your transfer description.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Apple Pay Section -->
+                        <div class="payment-section" id="applePaySection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Apple Pay</h3>
+                                <p style="margin-bottom: 15px;">Click the button below to pay with Apple Pay:</p>
+                                <button type="button" class="btn btn-block" style="background-color: #000; margin-bottom: 15px;">
+                                    <i class="fab fa-apple"></i> Pay with Apple Pay
+                                </button>
+                                <p style="color: var(--gray-dark); font-size: 0.9rem;">
+                                    <i class="fas fa-info-circle"></i> Apple Pay is only available on compatible Apple devices.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pay at Gym Section -->
+                        <div class="payment-section" id="payAtGymSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Pay at Gym House</h3>
+                                <p style="margin-bottom: 15px;">You can complete your payment at our gym location:</p>
+                                <div class="form-group">
+                                    <label class="form-label">Gym Address</label>
+                                    <input type="text" class="form-control" value="123 Fitness Avenue, Cityville, State 12345" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Business Hours</label>
+                                    <input type="text" class="form-control" value="Monday-Friday: 6AM-10PM, Weekends: 8AM-8PM" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Reservation ID</label>
+                                    <input type="text" class="form-control" value="REG-2025-12345" readonly>
+                                </div>
+                                <p style="margin-top: 15px; color: var(--warning-dark);">
+                                    <i class="fas fa-info-circle"></i> Please bring this Reservation ID and a valid ID to complete your registration at the gym. Your membership will be held for 48 hours.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Cryptocurrency Section -->
+                        <div class="payment-section" id="cryptoSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Cryptocurrency Payment</h3>
+                                <p style="margin-bottom: 15px;">Select your preferred cryptocurrency:</p>
+                                
+                                <div class="crypto-options">
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="bitcoin" value="bitcoin" checked>
+                                        <label for="bitcoin">
+                                            <i class="fab fa-bitcoin crypto-icon" style="color: #f7931a;"></i>
+                                            <span class="crypto-name">Bitcoin (BTC)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="ethereum" value="ethereum">
+                                        <label for="ethereum">
+                                            <i class="fab fa-ethereum crypto-icon" style="color: #627eea;"></i>
+                                            <span class="crypto-name">Ethereum (ETH)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="litecoin" value="litecoin">
+                                        <label for="litecoin">
+                                            <i class="fab fa-litecoin crypto-icon" style="color: #345d9d;"></i>
+                                            <span class="crypto-name">Litecoin (LTC)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="dogecoin" value="dogecoin">
+                                        <label for="dogecoin">
+                                            <i class="fas fa-dog crypto-icon" style="color: #c2a633;"></i>
+                                            <span class="crypto-name">Dogecoin (DOGE)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="usdt" value="usdt">
+                                        <label for="usdt">
+                                            <i class="fas fa-dollar-sign crypto-icon" style="color: #26a17b;"></i>
+                                            <span class="crypto-name">Tether (USDT)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="bnb" value="bnb">
+                                        <label for="bnb">
+                                            <i class="fas fa-coins crypto-icon" style="color: #f3ba2f;"></i>
+                                            <span class="crypto-name">Binance Coin (BNB)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 20px;">
+                                    <label class="form-label">Wallet Address</label>
+                                    <input type="text" class="form-control" value="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Amount in USD</label>
+                                    <input type="text" class="form-control" value="$139.08" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" id="cryptoAmountLabel">Amount in BTC</label>
+                                    <input type="text" class="form-control" id="cryptoAmount" value="0.00506 BTC" readonly>
+                                </div>
+                                <p style="margin-top: 15px; color: var(--warning-dark);">
+                                    <i class="fas fa-info-circle"></i> Please send the exact amount to the wallet address above. Your membership will be activated once the transaction is confirmed.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Personal Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="firstName" class="form-control" placeholder="John">
+                                        <div class="error-message" id="firstNameError">Please enter your first name</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="lastName" class="form-control" placeholder="Doe">
+                                        <div class="error-message" id="lastNameError">Please enter your last name</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="email" class="form-control" placeholder="john.doe@example.com">
+                                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" id="phone" class="form-control" placeholder="(123) 456-7890">
+                                    <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-home"></i>
+                                    <input type="text" id="address" class="form-control" placeholder="123 Main St">
+                                    <div class="error-message" id="addressError">Please enter your address</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-city"></i>
+                                        <input type="text" id="city" class="form-control" placeholder="New York">
+                                        <div class="error-message" id="cityError">Please enter your city</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state" class="form-label">State</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <input type="text" id="state" class="form-control" placeholder="NY">
+                                        <div class="error-message" id="stateError">Please enter your state</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode" class="form-label">Zip Code</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-map-pin"></i>
+                                        <input type="text" id="zipCode" class="form-control" placeholder="10001">
+                                        <div class="error-message" id="zipCodeError">Please enter a valid zip code</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob" class="form-label">Date of Birth</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <input type="date" id="dob" class="form-control">
+                                    <div class="error-message" id="dobError">Please enter your date of birth</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyContact" class="form-label">Emergency Contact Name</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-user-friends"></i>
+                                    <input type="text" id="emergencyContact" class="form-control" placeholder="Jane Doe">
+                                    <div class="error-message" id="emergencyContactError">Please enter an emergency contact</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyPhone" class="form-label">Emergency Contact Phone</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" id="emergencyPhone" class="form-control" placeholder="(123) 456-7890">
+                                    <div class="error-message" id="emergencyPhoneError">Please enter a valid phone number</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Health Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Health Information</h3>
+                            <div class="form-group">
+                                <label class="form-label">Do you have any medical conditions we should be aware of?</label>
+                                <div class="form-check" style="margin-bottom: 10px;">
+                                    <input type="radio" id="medicalYes" name="medicalCondition" value="yes">
+                                    <label for="medicalYes">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" id="medicalNo" name="medicalCondition" value="no" checked>
+                                    <label for="medicalNo">No</label>
+                                </div>
+                                <div id="medicalDetailsContainer" style="display: none; margin-top: 10px;">
+                                    <textarea id="medicalDetails" class="form-control" placeholder="Please provide details about your medical conditions"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <div class="form-group">
+                                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                    <input type="checkbox" id="termsCheck" style="margin-top: 5px;">
+                                    <label for="termsCheck" style="font-size: 0.9rem;">
+                                        I agree to the <a href="#" style="color: var(--primary);">Terms and Conditions</a>, <a href="#" style="color: var(--primary);">Privacy Policy</a>, and <a href="#" style="color: var(--primary);">Gym Rules</a>. I understand that my membership will auto-renew unless cancelled.
+                                    </label>
+                                </div>
+                                <div class="error-message" id="termsError">You must agree to the terms and conditions</div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="button" class="btn btn-block" id="paymentSubmitBtn">
+                            Complete Registration
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post-Payment Actions (initially hidden) -->
+            <div class="post-payment-actions" id="postPaymentActions" style="display: none;">
+                <button class="btn" id="viewReceiptFromFormBtn">
+                    <i class="fas fa-receipt"></i> View Receipt
+                </button>
+                <button class="btn btn-secondary" id="finishPaymentBtn">
+                    <i class="fas fa-check"></i> Finish Registration
+                </button>
+            </div>
+
+            <!-- Receipt -->
+            <div class="receipt" id="receipt">
+                <div class="receipt-header">
+                    <div class="receipt-logo">
+                        <i class="fas fa-dumbbell" style="font-size: 40px; color: var(--primary);"></i>
+                        <div class="receipt-logo-text">POWER<span style="color: var(--primary-dark);">FIT</span></div>
+                    </div>
+                    <div class="receipt-info">
+                        <div class="receipt-number" id="receiptNumber">Receipt #: REG-2025-12345</div>
+                        <div class="receipt-date" id="receiptDate">Date: May 6, 2025</div>
+                    </div>
+                </div>
+
+                <h2 class="receipt-title">Registration Receipt</h2>
+
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Member Information</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Name:</span>
+                        <span class="receipt-value" id="receiptName">John Doe</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Email:</span>
+                        <span class="receipt-value" id="receiptEmail">john.doe@example.com</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Phone:</span>
+                        <span class="receipt-value" id="receiptPhone">(123) 456-7890</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Address:</span>
+                        <span class="receipt-value" id="receiptAddress">123 Main St, New York, NY 10001</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Member ID:</span>
+                        <span class="receipt-value" id="receiptMemberID">PF-2025-12345</span>
+                    </div>
+                </div>
+
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Membership Details</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Membership Plan:</span>
+                        <span class="receipt-value" id="receiptPlan">Standard Monthly</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Duration:</span>
+                        <span class="receipt-value" id="receiptDuration">1 Month</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Start Date:</span>
+                        <span class="receipt-value" id="receiptStartDate">May 6, 2025</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">End Date:</span>
+                        <span class="receipt-value" id="receiptEndDate">June 6, 2025</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Auto-Renewal:</span>
+                        <span class="receipt-value">Yes</span>
+                    </div>
+                </div>
+
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Payment Details</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Payment Method:</span>
+                        <span class="receipt-value" id="receiptPaymentMethod">Credit Card</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Base Price:</span>
+                        <span class="receipt-value" id="receiptBasePrice">$79.99</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Registration Fee:</span>
+                        <span class="receipt-value" id="receiptRegFee">$49.99</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Tax (7%):</span>
+                        <span class="receipt-value" id="receiptTax">$9.10</span>
+                    </div>
+                    <div class="receipt-total">
+                        <span>Total Paid:</span>
+                        <span id="receiptTotal">$139.08</span>
+                    </div>
+                </div>
+
+                <!-- Gym Policies Section -->
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Gym Policies</h3>
+                    <div class="gym-policies">
+                        <h4 class="policies-title">PowerFit Gym House Policies</h4>
+                        <ul class="policies-list">
+                            <li>Membership is non-transferable and non-refundable.</li>
+                            <li>Members must present their membership card or ID for entry.</li>
+                            <li>Proper workout attire and athletic shoes are required at all times.</li>
+                            <li>Please wipe down equipment after use.</li>
+                            <li>Memberships can be frozen once per year for up to 30 days with written notice.</li>
+                            <li>Cancellations require 30-day written notice before the next billing cycle.</li>
+                            <li>Outside personal trainers are not permitted.</li>
+                            <li>PowerFit Gym is not responsible for lost or stolen items.</li>
+                            <li>Management reserves the right to terminate membership for violation of gym policies.</li>
+                            <li>Hours of operation may change during holidays or special events.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="receipt-footer">
+                    <div class="receipt-message">Thank you for choosing PowerFit Gym!</div>
+                    <div class="receipt-note">This receipt serves as proof of registration. Please keep it for your records.</div>
+                    <div class="receipt-actions">
+                        <button class="btn btn-outline" id="printReceiptBtn">
+                            <i class="fas fa-print"></i> Print Receipt
+                        </button>
+                        <button class="btn" id="downloadReceiptBtn">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button class="btn btn-secondary" id="emailReceiptBtn">
+                            <i class="fas fa-envelope"></i> Email Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Include jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        // DOM Elements
+        const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+        const paymentSections = document.querySelectorAll('.payment-section');
+        const paymentSubmitBtn = document.getElementById('paymentSubmitBtn');
+        const paymentContainer = document.getElementById('paymentContainer');
+        const successMessage = document.getElementById('successMessage');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const receipt = document.getElementById('receipt');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const printReceiptBtn = document.getElementById('printReceiptBtn');
+        const downloadReceiptBtn = document.getElementById('downloadReceiptBtn');
+        const emailReceiptBtn = document.getElementById('emailReceiptBtn');
+        const backToMain = document.getElementById('backToMain');
+        const cryptoOptions = document.querySelectorAll('input[name="cryptoType"]');
+        const cryptoAmountLabel = document.getElementById('cryptoAmountLabel');
+        const cryptoAmount = document.getElementById('cryptoAmount');
+        const viewReceiptBtn = document.getElementById('viewReceiptBtn');
+        const viewReceiptFromFormBtn = document.getElementById('viewReceiptFromFormBtn');
+        const backToPaymentFormBtn = document.getElementById('backToPaymentFormBtn');
+        const finishPaymentBtn = document.getElementById('finishPaymentBtn');
+        const postPaymentActions = document.getElementById('postPaymentActions');
+        const medicalYes = document.getElementById('medicalYes');
+        const medicalNo = document.getElementById('medicalNo');
+        const medicalDetailsContainer = document.getElementById('medicalDetailsContainer');
+
+        // Transaction History Elements
+        const viewHistoryBtn = document.getElementById('viewHistoryBtn');
+        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+        const transactionHistory = document.getElementById('transactionHistory');
+        const transactionTable = document.getElementById('transactionTable');
+        const transactionTableBody = document.getElementById('transactionTableBody');
+        const noTransactions = document.getElementById('noTransactions');
+
+        // Form Elements
+        const cardNumber = document.getElementById('cardNumber');
+        const expiryDate = document.getElementById('expiryDate');
+        const cvv = document.getElementById('cvv');
+        const cardName = document.getElementById('cardName');
+        const paypalEmail = document.getElementById('paypalEmail');
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const address = document.getElementById('address');
+        const city = document.getElementById('city');
+        const state = document.getElementById('state');
+        const zipCode = document.getElementById('zipCode');
+        const termsCheck = document.getElementById('termsCheck');
+        const dob = document.getElementById('dob');
+        const emergencyContact = document.getElementById('emergencyContact');
+        const emergencyPhone = document.getElementById('emergencyPhone');
+
+        // Error Elements
+        const cardNumberError = document.getElementById('cardNumberError');
+        const expiryDateError = document.getElementById('expiryDateError');
+        const cvvError = document.getElementById('cvvError');
+        const cardNameError = document.getElementById('cardNameError');
+        const paypalEmailError = document.getElementById('paypalEmailError');
+        const firstNameError = document.getElementById('firstNameError');
+        const lastNameError = document.getElementById('lastNameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const addressError = document.getElementById('addressError');
+        const cityError = document.getElementById('cityError');
+        const stateError = document.getElementById('stateError');
+        const zipCodeError = document.getElementById('zipCodeError');
+        const termsError = document.getElementById('termsError');
+        const dobError = document.getElementById('dobError');
+        const emergencyContactError = document.getElementById('emergencyContactError');
+        const emergencyPhoneError = document.getElementById('emergencyPhoneError');
+
+        // Receipt Elements
+        const receiptNumber = document.getElementById('receiptNumber');
+        const receiptDate = document.getElementById('receiptDate');
+        const receiptName = document.getElementById('receiptName');
+        const receiptEmail = document.getElementById('receiptEmail');
+        const receiptPhone = document.getElementById('receiptPhone');
+        const receiptAddress = document.getElementById('receiptAddress');
+        const receiptMemberID = document.getElementById('receiptMemberID');
+        const receiptPlan = document.getElementById('receiptPlan');
+        const receiptDuration = document.getElementById('receiptDuration');
+        const receiptStartDate = document.getElementById('receiptStartDate');
+        const receiptEndDate = document.getElementById('receiptEndDate');
+        const receiptPaymentMethod = document.getElementById('receiptPaymentMethod');
+        const receiptBasePrice = document.getElementById('receiptBasePrice');
+        const receiptRegFee = document.getElementById('receiptRegFee');
+        const receiptTax = document.getElementById('receiptTax');
+        const receiptTotal = document.getElementById('receiptTotal');
+
+        // Transaction History
+        let transactions = [];
+
+        // Load transactions from localStorage
+        function loadTransactions() {
+            const savedTransactions = localStorage.getItem('gymTransactions');
+            if (savedTransactions) {
+                transactions = JSON.parse(savedTransactions);
+                updateTransactionHistory();
+            }
+            
+            // Show/hide clear button based on transactions
+            if (transactions.length > 0) {
+                clearHistoryBtn.style.display = 'inline-block';
+            } else {
+                clearHistoryBtn.style.display = 'none';
+            }
+        }
+
+        // Save transaction to history
+        function saveTransaction() {
+            const fullName = `${firstName.value} ${lastName.value}`;
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            let paymentMethodText = getPaymentMethodText(selectedMethod);
+            
+            const transaction = {
+                id: `TRX-${Date.now()}`,
+                date: new Date().toLocaleString(),
+                name: fullName,
+                email: email.value,
+                plan: document.getElementById('summaryPlan').textContent,
+                amount: document.getElementById('summaryTotal').textContent,
+                paymentMethod: paymentMethodText
+            };
+            
+            transactions.push(transaction);
+            localStorage.setItem('gymTransactions', JSON.stringify(transactions));
+            
+            // Show clear button if this is the first transaction
+            if (transactions.length === 1) {
+                clearHistoryBtn.style.display = 'inline-block';
+            }
+        }
+
+        // Get payment method text
+        function getPaymentMethodText(method) {
+            switch (method) {
+                case 'creditCard':
+                    const lastFour = cardNumber.value.replace(/\s/g, '').slice(-4);
+                    return `Credit Card (ending in ${lastFour})`;
+                case 'paypal':
+                    return `PayPal (${paypalEmail.value})`;
+                case 'bankTransfer':
+                    return 'Bank Transfer';
+                case 'applePay':
+                    return 'Apple Pay';
+                case 'payAtGym':
+                    return 'Pay at Gym House';
+                case 'crypto':
+                    const selectedCrypto = document.querySelector('input[name="cryptoType"]:checked').value;
+                    let cryptoName = 'Bitcoin';
+                    
+                    switch(selectedCrypto) {
+                        case 'ethereum':
+                            cryptoName = 'Ethereum';
+                            break;
+                        case 'litecoin':
+                            cryptoName = 'Litecoin';
+                            break;
+                        case 'dogecoin':
+                            cryptoName = 'Dogecoin';
+                            break;
+                        case 'usdt':
+                            cryptoName = 'Tether';
+                            break;
+                        case 'bnb':
+                            cryptoName = 'Binance Coin';
+                            break;
+                    }
+                    
+                    return `Cryptocurrency (${cryptoName})`;
+                default:
+                    return 'Unknown';
+            }
+        }
+
+        // Update transaction history display
+        function updateTransactionHistory() {
+            if (transactions.length === 0) {
+                noTransactions.style.display = 'block';
+                transactionTable.style.display = 'none';
+            } else {
+                noTransactions.style.display = 'none';
+                transactionTable.style.display = 'table';
+                
+                // Clear existing rows
+                transactionTableBody.innerHTML = '';
+                
+                // Add transaction rows
+                transactions.forEach(transaction => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${transaction.id}</td>
+                        <td>${transaction.date}</td>
+                        <td>${transaction.name}</td>
+                        <td>${transaction.plan}</td>
+                        <td>${transaction.paymentMethod}</td>
+                        <td>${transaction.amount}</td>
+                    `;
+                    
+                    transactionTableBody.appendChild(row);
+                });
+            }
+        }
+
+        // Current Date
+        const currentDate = new Date();
+        const formattedDate = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+        
+        // Set dates in the UI
+        document.getElementById('membershipStart').textContent = formattedDate;
+        
+        // Calculate end date (1 month later)
+        const endDate = new Date(currentDate);
+        endDate.setMonth(endDate.getMonth() + 1);
+        const formattedEndDate = `${endDate.toLocaleString('default', { month: 'long' })} ${endDate.getDate()}, ${endDate.getFullYear()}`;
+        document.getElementById('membershipEnd').textContent = formattedEndDate;
+        
+        // Set receipt date
+        document.getElementById('receiptDate').textContent = `Date: ${formattedDate}`;
+        document.getElementById('receiptStartDate').textContent = formattedDate;
+        document.getElementById('receiptEndDate').textContent = formattedEndDate;
+
+        // Generate random receipt number and member ID
+        const receiptNum = `REG-${currentDate.getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+        const memberID = `PF-${currentDate.getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+        document.getElementById('receiptNumber').textContent = `Receipt #: ${receiptNum}`;
+        document.getElementById('receiptMemberID').textContent = memberID;
+
+        // Medical condition toggle
+        medicalYes.addEventListener('change', () => {
+            medicalDetailsContainer.style.display = 'block';
+        });
+
+        medicalNo.addEventListener('change', () => {
+            medicalDetailsContainer.style.display = 'none';
+        });
+
+        // Payment Method Selection
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', () => {
+                // Hide all payment sections
+                paymentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected payment section
+                const selectedMethod = document.querySelector(`input[name="paymentMethod"]:checked`).value;
+                document.getElementById(`${selectedMethod}Section`).classList.add('active');
+                
+                // Update button text based on payment method
+                if (selectedMethod === 'bankTransfer') {
+                    paymentSubmitBtn.textContent = 'Confirm Bank Transfer Details';
+                } else if (selectedMethod === 'applePay') {
+                    paymentSubmitBtn.textContent = 'Continue with Apple Pay';
+                } else if (selectedMethod === 'payAtGym') {
+                    paymentSubmitBtn.textContent = 'Reserve Membership';
+                } else if (selectedMethod === 'crypto') {
+                    paymentSubmitBtn.textContent = 'Confirm Crypto Payment Details';
+                } else {
+                    paymentSubmitBtn.textContent = 'Complete Registration';
+                }
+            });
+        });
+
+        // Cryptocurrency Selection
+        cryptoOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                const selectedCrypto = document.querySelector('input[name="cryptoType"]:checked').value;
+                let cryptoSymbol = 'BTC';
+                let cryptoValue = '0.00506';
+                
+                switch(selectedCrypto) {
+                    case 'ethereum':
+                        cryptoSymbol = 'ETH';
+                        cryptoValue = '0.0692';
+                        break;
+                    case 'litecoin':
+                        cryptoSymbol = 'LTC';
+                        cryptoValue = '1.6932';
+                        break;
+                    case 'dogecoin':
+                        cryptoSymbol = 'DOGE';
+                        cryptoValue = '460.75';
+                        break;
+                    case 'usdt':
+                        cryptoSymbol = 'USDT';
+                        cryptoValue = '139.08';
+                        break;
+                    case 'bnb':
+                        cryptoSymbol = 'BNB';
+                        cryptoValue = '0.3932';
+                        break;
+                    default:
+                        cryptoSymbol = 'BTC';
+                        cryptoValue = '0.00506';
+                }
+                
+                cryptoAmountLabel.textContent = `Amount in ${cryptoSymbol}`;
+                cryptoAmount.value = `${cryptoValue} ${cryptoSymbol}`;
+            });
+        });
+
+        // Format Card Number
+        cardNumber.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' ';
+                }
+                formattedValue += value[i];
+            }
+            
+            e.target.value = formattedValue;
+        });
+
+        // Format Expiry Date
+        expiryDate.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            
+            e.target.value = value;
+        });
+
+        // Format Phone Number
+        phone.addEventListener('input', (e) => {
+            formatPhoneNumber(e.target);
+        });
+
+        emergencyPhone.addEventListener('input', (e) => {
+            formatPhoneNumber(e.target);
+        });
+
+        function formatPhoneNumber(inputElement) {
+            let value = inputElement.value.replace(/\D/g, '');
+            let formattedValue = '';
+            
+            if (value.length > 0) {
+                formattedValue = '(' + value.substring(0, 3);
+            }
+            if (value.length > 3) {
+                formattedValue += ') ' + value.substring(3, 6);
+            }
+            if (value.length > 6) {
+                formattedValue += '-' + value.substring(6, 10);
+            }
+            
+            inputElement.value = formattedValue;
+        }
+
+        // Validate Form
+        function validateForm() {
+            let isValid = true;
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            // Reset all error messages
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => {
+                error.classList.remove('show');
+            });
+            
+            // Validate based on payment method
+            if (selectedMethod === 'creditCard') {
+                // Card Number Validation
+                if (!cardNumber.value.trim() || cardNumber.value.replace(/\s/g, '').length < 16) {
+                    cardNumberError.classList.add('show');
+                    cardNumber.classList.add('error');
+                    isValid = false;
+                } else {
+                    cardNumber.classList.remove('error');
+                }
+                
+                // Expiry Date Validation
+                const expiryPattern = /^\d{2}\/\d{2}$/;
+                if (!expiryDate.value.trim() || !expiryPattern.test(expiryDate.value)) {
+                    expiryDateError.classList.add('show');
+                    expiryDate.classList.add('error');
+                    isValid = false;
+                } else {
+                    expiryDate.classList.remove('error');
+                }
+                
+                // CVV Validation
+                if (!cvv.value.trim() || cvv.value.length < 3) {
+                    cvvError.classList.add('show');
+                    cvv.classList.add('error');
+                    isValid = false;
+                } else {
+                    cvv.classList.remove('error');
+                }
+                
+                // Card Name Validation
+                if (!cardName.value.trim()) {
+                    cardNameError.classList.add('show');
+                    cardName.classList.add('error');
+                    isValid = false;
+                } else {
+                    cardName.classList.remove('error');
+                }
+            } else if (selectedMethod === 'paypal') {
+                // PayPal Email Validation
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!paypalEmail.value.trim() || !emailPattern.test(paypalEmail.value)) {
+                    paypalEmailError.classList.add('show');
+                    paypalEmail.classList.add('error');
+                    isValid = false;
+                } else {
+                    paypalEmail.classList.remove('error');
+                }
+            }
+            
+            // Common Validations
+            // First Name
+            if (!firstName.value.trim()) {
+                firstNameError.classList.add('show');
+                firstName.classList.add('error');
+                isValid = false;
+            } else {
+                firstName.classList.remove('error');
+            }
+            
+            // Last Name
+            if (!lastName.value.trim()) {
+                lastNameError.classList.add('show');
+                lastName.classList.add('error');
+                isValid = false;
+            } else {
+                lastName.classList.remove('error');
+            }
+            
+            // Email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailPattern.test(email.value)) {
+                emailError.classList.add('show');
+                email.classList.add('error');
+                isValid = false;
+            } else {
+                email.classList.remove('error');
+            }
+            
+            // Phone
+            if (!phone.value.trim() || phone.value.replace(/\D/g, '').length < 10) {
+                phoneError.classList.add('show');
+                phone.classList.add('error');
+                isValid = false;
+            } else {
+                phone.classList.remove('error');
+            }
+            
+            // Address
+            if (!address.value.trim()) {
+                addressError.classList.add('show');
+                address.classList.add('error');
+                isValid = false;
+            } else {
+                address.classList.remove('error');
+            }
+            
+            // City
+            if (!city.value.trim()) {
+                cityError.classList.add('show');
+                city.classList.add('error');
+                isValid = false;
+            } else {
+                city.classList.remove('error');
+            }
+            
+            // State
+            if (!state.value.trim()) {
+                stateError.classList.add('show');
+                state.classList.add('error');
+                isValid = false;
+            } else {
+                state.classList.remove('error');
+            }
+            
+            // Zip Code
+            const zipPattern = /^\d{5}(-\d{4})?$/;
+            if (!zipCode.value.trim() || !zipPattern.test(zipCode.value)) {
+                zipCodeError.classList.add('show');
+                zipCode.classList.add('error');
+                isValid = false;
+            } else {
+                zipCode.classList.remove('error');
+            }
+            
+            // Date of Birth
+            if (!dob.value) {
+                dobError.classList.add('show');
+                dob.classList.add('error');
+                isValid = false;
+            } else {
+                dob.classList.remove('error');
+            }
+            
+            // Emergency Contact
+            if (!emergencyContact.value.trim()) {
+                emergencyContactError.classList.add('show');
+                emergencyContact.classList.add('error');
+                isValid = false;
+            } else {
+                emergencyContact.classList.remove('error');
+            }
+            
+            // Emergency Phone
+            if (!emergencyPhone.value.trim() || emergencyPhone.value.replace(/\D/g, '').length < 10) {
+                emergencyPhoneError.classList.add('show');
+                emergencyPhone.classList.add('error');
+                isValid = false;
+            } else {
+                emergencyPhone.classList.remove('error');
+            }
+            
+            // Terms and Conditions
+            if (!termsCheck.checked) {
+                termsError.classList.add('show');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Submit Payment
+        paymentSubmitBtn.addEventListener('click', () => {
+            if (validateForm()) {
+                // Show loading overlay
+                loadingOverlay.classList.add('show');
+                
+                // Simulate payment processing
+                setTimeout(() => {
+                    // Hide loading overlay
+                    loadingOverlay.classList.remove('show');
+                    
+                    // Save transaction to history
+                    saveTransaction();
+                    
+                    // Update receipt information
+                    updateReceipt();
+                    
+                    // Hide payment container
+                    paymentContainer.style.display = 'none';
+                    
+                    // Show success message
+                    successMessage.classList.add('show');
+                    
+                    // Show post-payment actions
+                    postPaymentActions.style.display = 'flex';
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 2000);
+            }
+        });
+
+        // Update Receipt
+        function updateReceipt() {
+            const fullName = `${firstName.value} ${lastName.value}`;
+            const fullAddress = `${address.value}, ${city.value}, ${state.value} ${zipCode.value}`;
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            let paymentMethodText = getPaymentMethodText(selectedMethod);
+            
+            // Update receipt with user information
+            receiptName.textContent = fullName;
+            receiptEmail.textContent = email.value;
+            receiptPhone.textContent = phone.value;
+            receiptAddress.textContent = fullAddress;
+            receiptPaymentMethod.textContent = paymentMethodText;
+        }
+
+        // View Receipt Button from Success Message
+        viewReceiptBtn.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            receipt.style.display = 'block';
+        });
+
+        // View Receipt Button from Form
+        viewReceiptFromFormBtn.addEventListener('click', () => {
+            receipt.style.display = 'block';
+        });
+
+        // Back to Payment Form Button
+        backToPaymentFormBtn.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            paymentContainer.style.display = 'flex';
+        });
+
+        // Finish Payment Button
+        finishPaymentBtn.addEventListener('click', () => {
+            // Hide success message and post-payment actions
+            successMessage.style.display = 'none';
+            postPaymentActions.style.display = 'none';
+            receipt.style.display = 'none';
+            
+            // Show welcome message
+            welcomeMessage.classList.add('show');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Print Receipt
+        printReceiptBtn.addEventListener('click', () => {
+            window.print();
+        });
+
+        // Download Receipt as PDF
+        downloadReceiptBtn.addEventListener('click', () => {
+            // Show loading overlay
+            loadingOverlay.classList.add('show');
+            
+            const { jsPDF } = window.jspdf;
+            
+            // Create a new PDF document
+            html2canvas(receipt, { scale: 2 }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save(`PowerFit_Registration_Receipt_${receiptNum}.pdf`);
+                
+                // Hide loading overlay
+                loadingOverlay.classList.remove('show');
+            });
+        });
+
+        // Email Receipt
+        emailReceiptBtn.addEventListener('click', () => {
+            // Show loading overlay
+            loadingOverlay.classList.add('show');
+            
+            // Simulate sending email
+            setTimeout(() => {
+                // Hide loading overlay
+                loadingOverlay.classList.remove('show');
+                
+                alert(`Receipt has been sent to ${email.value}`);
+            }, 1500);
+        });
+
+        // View Transaction History
+        viewHistoryBtn.addEventListener('click', () => {
+            if (transactionHistory.style.display === 'block') {
+                transactionHistory.style.display = 'none';
+                viewHistoryBtn.innerHTML = '<i class="fas fa-history"></i> View History';
+            } else {
+                transactionHistory.style.display = 'block';
+                viewHistoryBtn.innerHTML = '<i class="fas fa-history"></i> Hide History';
+                updateTransactionHistory();
+            }
+        });
+
+        // Clear Transaction History
+        clearHistoryBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all transaction history?')) {
+                transactions = [];
+                localStorage.removeItem('gymTransactions');
+                updateTransactionHistory();
+                clearHistoryBtn.style.display = 'none';
+            }
+        });
+
+        // Back to Main
+        if (backToMain) {
+            backToMain.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'index.html';
+            });
+        }
+
+        // Load transactions on page load
+        loadTransactions();
+    </script>
+</body>
+</html>

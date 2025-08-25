@@ -1,0 +1,2739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerFit - Programs</title>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://randomuser.me">
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* Reset and Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Header and Navigation */
+    header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .logo i {
+        color: #8a2be2;
+        margin-right: 10px;
+        font-size: 28px;
+    }
+
+    .logo span {
+        color: #8a2be2;
+    }
+
+    .auth-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-outline {
+        border: 1px solid #8a2be2;
+        color: #8a2be2;
+        background: transparent;
+    }
+
+    .btn-outline:hover {
+        background-color: #8a2be2;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #8a2be2;
+        color: #fff;
+        border: 1px solid #8a2be2;
+    }
+
+    .btn-primary:hover {
+        background-color: #7823c7;
+        border-color: #7823c7;
+    }
+
+    /* Main Content */
+    .main-content {
+        padding: 50px 0;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .section-title h2 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: #8a2be2;
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+
+    /* Program Categories */
+    .program-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .program-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        height: 500px; /* Increased height to accommodate all buttons */
+        cursor: pointer;
+    }
+
+    .program-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .program-image {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .program-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .program-card:hover .program-image img {
+        transform: scale(1.1);
+    }
+
+    .program-icon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #8a2be2;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+    }
+
+    .program-content {
+        padding: 25px;
+        position: relative;
+    }
+
+    .program-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .program-description {
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .program-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .program-link {
+        display: inline-flex;
+        align-items: center;
+        color: #8a2be2;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 5px;
+        background-color: rgba(138, 43, 226, 0.1);
+    }
+
+    .program-link i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .program-link:hover {
+        color: #fff;
+        background-color: #8a2be2;
+    }
+
+    .program-link:hover i {
+        transform: translateX(5px);
+    }
+
+    .learn-more-btn {
+        display: inline-flex;
+        align-items: center;
+        color: #ff5722;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 5px;
+        background-color: rgba(255, 87, 34, 0.1);
+    }
+
+    .learn-more-btn i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .learn-more-btn:hover {
+        color: #fff;
+        background-color: #ff5722;
+    }
+
+    .learn-more-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    .contact-instructor-btn {
+        display: inline-flex;
+        align-items: center;
+        color: #4caf50;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 5px;
+        background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    .contact-instructor-btn i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .contact-instructor-btn:hover {
+        color: #fff;
+        background-color: #4caf50;
+    }
+
+    .contact-instructor-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    .how-to-engage-btn {
+        display: inline-flex;
+        align-items: center;
+        color: #2196f3;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 5px;
+        background-color: rgba(33, 150, 243, 0.1);
+    }
+
+    .how-to-engage-btn i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .how-to-engage-btn:hover {
+        color: #fff;
+        background-color: #2196f3;
+    }
+
+    .how-to-engage-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    /* Program Detail Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.5s ease forwards;
+        position: relative;
+    }
+
+    @keyframes modalSlideIn {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .modal-header {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .modal-header img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .modal-header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 30px;
+        color: #fff;
+    }
+
+    .modal-title {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .modal-category {
+        display: inline-block;
+        background-color: #8a2be2;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .modal-close:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .modal-body {
+        padding: 30px;
+    }
+
+    .modal-section {
+        margin-bottom: 30px;
+    }
+
+    .modal-section-title {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #333;
+        position: relative;
+        padding-left: 15px;
+    }
+
+    .modal-section-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background-color: #8a2be2;
+        border-radius: 2px;
+    }
+
+    .modal-description {
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(138, 43, 226, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: #8a2be2;
+    }
+
+    .feature-text {
+        font-weight: 500;
+    }
+
+    .schedule-list {
+        list-style: none;
+        margin-top: 20px;
+    }
+
+    .schedule-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .schedule-item:last-child {
+        border-bottom: none;
+    }
+
+    .schedule-day {
+        font-weight: 600;
+        width: 120px;
+    }
+
+    .schedule-time {
+        color: #666;
+    }
+
+    .trainer-info {
+        display: flex;
+        align-items: center;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .trainer-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    .trainer-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .trainer-details h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .trainer-details p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .modal-footer {
+        padding: 20px 30px;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .modal-price span {
+        font-size: 16px;
+        color: #666;
+        font-weight: 400;
+    }
+
+    .enroll-btn {
+        padding: 12px 30px;
+        background-color: #8a2be2;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .enroll-btn:hover {
+        background-color: #7823c7;
+    }
+
+    /* Login Modal */
+    .login-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 3000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .login-modal.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+    }
+
+    .login-container {
+        background-color: #fff;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.5s ease forwards;
+    }
+
+    .login-header {
+        background-color: #8a2be2;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .login-title {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .login-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .login-close:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .login-body {
+        padding: 30px;
+    }
+
+    .login-form {
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #8a2be2;
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .remember-me input {
+        margin-right: 10px;
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #8a2be2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .login-btn:hover {
+        background-color: #7823c7;
+    }
+
+    .forgot-password {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .forgot-password a {
+        color: #8a2be2;
+        text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+
+    .social-login {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .social-login-title {
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .social-login-title::before,
+    .social-login-title::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 35%;
+        height: 1px;
+        background-color: #ddd;
+    }
+
+    .social-login-title::before {
+        left: 0;
+    }
+
+    .social-login-title::after {
+        right: 0;
+    }
+
+    .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        color: #333;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .google-btn {
+        color: #DB4437;
+    }
+
+    .facebook-btn {
+        color: #4267B2;
+    }
+
+    .apple-btn {
+        color: #000;
+    }
+
+    .signup-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .signup-link a {
+        color: #8a2be2;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .signup-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Contact Instructor Modal */
+    .contact-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 3000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .contact-modal.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+    }
+
+    .contact-container {
+        background-color: #fff;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.5s ease forwards;
+    }
+
+    .contact-header {
+        background-color: #4caf50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .contact-title {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .contact-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .contact-close:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .contact-body {
+        padding: 30px;
+    }
+
+    .contact-instructor-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .contact-instructor-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    .contact-instructor-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .contact-instructor-details h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .contact-instructor-details p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .contact-methods {
+        margin-top: 20px;
+    }
+
+    .contact-method {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .contact-method:hover {
+        background-color: #e9ecef;
+        transform: translateY(-3px);
+    }
+
+    .contact-method-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 20px;
+    }
+
+    .sms-icon {
+        background-color: rgba(33, 150, 243, 0.1);
+        color: #2196f3;
+    }
+
+    .call-icon {
+        background-color: rgba(76, 175, 80, 0.1);
+        color: #4caf50;
+    }
+
+    .video-icon {
+        background-color: rgba(233, 30, 99, 0.1);
+        color: #e91e63;
+    }
+
+    .chat-icon {
+        background-color: rgba(255, 152, 0, 0.1);
+        color: #ff9800;
+    }
+
+    .contact-method-details {
+        flex: 1;
+    }
+
+    .contact-method-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .contact-method-description {
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* How to Engage Modal */
+    .engage-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 3000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .engage-modal.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .engage-container {
+        background-color: #fff;
+        width: 90%;
+        max-width: 800px;
+        margin: 50px auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.5s ease forwards;
+    }
+
+    .engage-header {
+        background-color: #2196f3;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .engage-title {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .engage-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .engage-close:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .engage-body {
+        padding: 30px;
+    }
+
+    .engage-description {
+        margin-bottom: 30px;
+        color: #666;
+        line-height: 1.8;
+    }
+
+    .engage-video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .engage-video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .engage-steps {
+        margin-top: 30px;
+    }
+
+    .engage-step {
+        display: flex;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .engage-step:last-child {
+        border-bottom: none;
+    }
+
+    .engage-step-number {
+        width: 40px;
+        height: 40px;
+        background-color: #2196f3;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+
+    .engage-step-content {
+        flex: 1;
+    }
+
+    .engage-step-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .engage-step-description {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .engage-footer {
+        padding: 20px 30px;
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+
+    .engage-footer-text {
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .download-guide-btn {
+        padding: 12px 25px;
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .download-guide-btn i {
+        margin-right: 10px;
+    }
+
+    .download-guide-btn:hover {
+        background-color: #1976d2;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+        margin-top: 30px;
+    }
+
+    .testimonial-slider {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 10px 0;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .testimonial-slider::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+    .testimonial-card {
+        flex: 0 0 auto;
+        width: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        scroll-snap-align: start;
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .testimonial-content {
+        position: relative;
+        padding-top: 20px;
+    }
+
+    .testimonial-content::before {
+        content: '\201C';
+        font-size: 60px;
+        color: #8a2be2;
+        opacity: 0.2;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+    }
+
+    .testimonial-text {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+    }
+
+    .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+    }
+
+    .testimonial-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial-info h4 {
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .testimonial-info p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .testimonial-rating {
+        color: #ffc107;
+        margin-top: 5px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+        margin-top: 30px;
+    }
+
+    .faq-list {
+        list-style: none;
+    }
+
+    .faq-item {
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background-color: #f0f0f0;
+    }
+
+    .faq-question i {
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        background-color: #fff;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 15px 20px;
+        max-height: 500px;
+    }
+
+    /* Related Programs */
+    .related-programs {
+        margin-top: 30px;
+    }
+
+    .related-programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .related-program-card {
+        position: relative;
+        height: 200px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .related-program-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .related-program-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .related-program-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .related-program-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: #fff;
+    }
+
+    .related-program-title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .related-program-link {
+        color: #8a2be2;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .related-program-link i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .related-program-link:hover {
+        color: #fff;
+    }
+
+    .related-program-link:hover i {
+        transform: translateX(3px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    .delay-1 {
+        animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+        animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+        animation-delay: 0.3s;
+    }
+
+    .delay-4 {
+        animation-delay: 0.4s;
+    }
+
+    .delay-5 {
+        animation-delay: 0.5s;
+    }
+
+    .delay-6 {
+        animation-delay: 0.6s;
+    }
+
+    .delay-7 {
+        animation-delay: 0.7s;
+    }
+
+    .delay-8 {
+        animation-delay: 0.8s;
+    }
+
+    /* Pulse Animation for CTA */
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(138, 43, 226, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
+        }
+    }
+
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            padding: 15px 0;
+        }
+
+        .auth-buttons {
+            margin-top: 10px;
+        }
+
+        .program-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+            width: 95%;
+            margin: 20px auto;
+        }
+
+        .modal-header {
+            height: 200px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+        }
+
+        .modal-footer {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-container,
+        .engage-container {
+            width: 95%;
+            margin: 20px auto;
+        }
+    }
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>POWER</span>FIT
+            </a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container">
+        <div class="section-title fade-in">
+            <h2>Program Categories</h2>
+        </div>
+
+        <div class="program-grid">
+            <!-- Strength Training -->
+            <div class="program-card fade-in delay-1" data-program="strength">
+                <div class="program-image">
+                    <img src="strength training.jfif" alt="Strength Training" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Strength Training</h3>
+                    <p class="program-description">Build muscle, increase strength, and improve overall fitness.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="strength">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=U0bhE67HuDY" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="strength">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="strength">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cardio Fitness -->
+            <div class="program-card fade-in delay-2" data-program="cardio">
+                <div class="program-image">
+                    <img src="cardio2.jfif" alt="Cardio Fitness" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Cardio Fitness</h3>
+                    <p class="program-description">Improve heart health, burn calories, and boost endurance.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="cardio">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=PvEnWsPrL4w" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="cardio">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="cardio">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yoga & Flexibility -->
+            <div class="program-card fade-in delay-3" data-program="yoga">
+                <div class="program-image">
+                    <img src="flexibility.jfif" alt="Yoga & Flexibility" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Yoga & Flexibility</h3>
+                    <p class="program-description">Enhance flexibility, balance, and mental wellbeing.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="yoga">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=v7AYKMP6rOE" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="yoga">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="yoga">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Classes -->
+            <div class="program-card fade-in delay-4" data-program="group">
+                <div class="program-image">
+                    <img src="group classes.jfif" alt="Group Classes" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Group Classes</h3>
+                    <p class="program-description">Motivating group sessions for all fitness levels.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="group">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=UBMk30rjy0o" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="group">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="group">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HIIT Training -->
+            <div class="program-card fade-in delay-5" data-program="hiit">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="HIIT Training" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">HIIT Training</h3>
+                    <p class="program-description">High-intensity interval training for maximum results in minimal time.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="hiit">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=ml6cT4AZdqI" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="hiit">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="hiit">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CrossFit -->
+            <div class="program-card fade-in delay-6" data-program="crossfit">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="CrossFit" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">CrossFit</h3>
+                    <p class="program-description">Functional movements performed at high intensity for overall fitness.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="crossfit">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=mlVrkiCoKkg" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="crossfit">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="crossfit">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilates -->
+            <div class="program-card fade-in delay-7" data-program="pilates">
+                <div class="program-image">
+                    <img src="pilates.jfif" alt="Pilates" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Pilates</h3>
+                    <p class="program-description">Core-strengthening exercises that improve posture, balance, and flexibility.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="pilates">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=K56Z12XNQ5c" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="pilates">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="pilates">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sports Conditioning -->
+            <div class="program-card fade-in delay-8" data-program="sports">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sports Conditioning" loading="lazy">
+                    <div class="program-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <h3 class="program-title">Sports Conditioning</h3>
+                    <p class="program-description">Sport-specific training to enhance athletic performance and prevent injuries.</p>
+                    <div class="program-actions">
+                        <a href="#" class="program-link view-program" data-program="sports">
+                            View Program <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=7J3jmgoWXlg" target="_blank" class="learn-more-btn">
+                            Learn More <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="#" class="contact-instructor-btn" data-program="sports">
+                            Contact Instructor <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="how-to-engage-btn" data-program="sports">
+                            How to Engage <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Program Detail Modals -->
+<!-- Strength Training Modal -->
+<div id="strength-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img src="strength training.jfif" alt="Strength Training" loading="lazy">
+            <div class="modal-header-overlay">
+                <span class="modal-category">Strength Training</span>
+                <h2 class="modal-title">Strength Fundamentals</h2>
+            </div>
+            <div class="modal-close"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="modal-section">
+                <h3 class="modal-section-title">About This Program</h3>
+                <p class="modal-description">
+                    Our Strength Training program is designed to help you build muscle, increase strength, and improve overall fitness. 
+                    Whether you're a beginner or looking to take your strength to the next level, our expert trainers will guide you 
+                    through proper techniques and progressive workouts to help you achieve your goals.
+                </p>
+                <p class="modal-description">
+                    This program focuses on compound movements that engage multiple muscle groups, helping you build functional strength 
+                    that translates to everyday activities. You'll learn proper form, progressive overload techniques, and recovery strategies 
+                    to maximize your results.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Program Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="feature-text">8-Week Program</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-text">Small Group Training</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="feature-text">Progress Tracking</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="feature-text">Nutrition Guidance</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="feature-text">Equipment Provided</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="feature-text">Completion Certificate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Weekly Schedule</h3>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <div class="schedule-day">Monday</div>
+                        <div class="schedule-time">6:00 AM - 7:30 AM | 5:00 PM - 6:30 PM</div>
+                    </li>
+                    <li class="schedule-item">
+                        <div class="schedule-day">Wednesday</div>
+                        <div class="schedule-time">6:00 AM - 7:30 AM | 5:00 PM - 6:30 PM</div>
+                    </li>
+                    <li class="schedule-item">
+                        <div class="schedule-day">Friday</div>
+                        <div class="schedule-time">6:00 AM - 7:30 AM | 5:00 PM - 6:30 PM</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Your Trainer</h3>
+                <div class="trainer-info">
+                    <div class="trainer-image">
+                        <img src="Dawd strength.jfif" alt="Dawd" loading="lazy">
+                    </div>
+                    <div class="trainer-details">
+                        <h4>Dawd Hassan</h4>
+                        <p>Certified Strength & Conditioning Specialist with 9+ years of experience in strength training and athletic performance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="modal-section">
+                <h3 class="modal-section-title">Member Testimonials</h3>
+                <div class="testimonials">
+                    <div class="testimonial-slider">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "This strength program completely transformed my physique. I've gained 19 pounds of muscle and my lifts have increased dramatically. The trainers are knowledgeable and supportive."
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">
+                                        <img src="Tilahun.jfif" alt="Tilahun Amsalu." loading="lazy">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <h4>Tilahun Amsalu.</h4>
+                                        <p>Member for 17 months</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "As someone new to strength training, I was intimidated at first. But the coaches made me feel comfortable and taught me proper form. I'm now stronger than I've ever been!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">
+                                        <img src="hellen.jfif" alt="Hellen Berihun." loading="lazy">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <h4>Hellen Berihun.</h4>
+                                        <p>Member for 6 months</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "The nutrition guidance combined with the strength program helped me lose 25 pounds while gaining muscle. The community aspect keeps me motivated to show up consistently."
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">
+                                        <img src="binyam.jfif" alt="Binyam Gedefaw." loading="lazy">
+                                    </div>
+                                    <div class="testimonial-info">
+                                        <h4>Binyam Gedefw</h4>
+                                        <p>Member for 10 months</p>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="modal-section">
+                <h3 class="modal-section-title">Frequently Asked Questions</h3>
+                <ul class="faq-list">
+                    <li class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need prior experience with strength training?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No prior experience is necessary. Our program is designed for all fitness levels, and our trainers will guide you through proper form and technique from day one. We'll start with an assessment to determine your current fitness level and customize the program accordingly.</p>
+                        </div>
+                    </li>
+                    <li class="faq-item">
+                        <div class="faq-question">
+                            <span>What equipment will I be using?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You'll have access to a variety of equipment including barbells, dumbbells, kettlebells, squat racks, bench press stations, cable machines, and more. Our facility is fully equipped with professional-grade equipment to ensure safe and effective workouts.</p>
+                        </div>
+                    </li>
+                    <li class="faq-item">
+                        <div class="faq-question">
+                            <span>How many sessions per week are recommended?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For optimal results, we recommend attending 3 sessions per week with rest days in between. This frequency allows for proper recovery while still providing enough stimulus for strength gains. However, the program can be adjusted based on your schedule and recovery capacity.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-price">$35 <span>/8 weeks</span></div>
+            <button class="enroll-btn pulse">Enroll Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Cardio Fitness Modal -->
+<div id="cardio-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img src="cardio2.jfif" alt="Cardio Fitness" loading="lazy">
+            <div class="modal-header-overlay">
+                <span class="modal-category">Cardio Fitness</span>
+                <h2 class="modal-title">Cardio Blast</h2>
+            </div>
+            <div class="modal-close"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="modal-section">
+                <h3 class="modal-section-title">About This Program</h3>
+                <p class="modal-description">
+                    Our Cardio Fitness program is designed to improve heart health, burn calories, and boost endurance. 
+                    This high-energy program combines various cardio exercises to keep your heart rate up and maximize calorie burn.
+                </p>
+                <p class="modal-description">
+                    Whether you're looking to lose weight, improve cardiovascular health, or increase stamina, our Cardio Blast program 
+                    offers a fun and effective way to achieve your fitness goals. Our expert trainers will guide you through proper techniques 
+                    and help you maintain the right intensity for your fitness level.
+                </p>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Program Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="feature-text">6-Week Program</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-text">Group Sessions</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="feature-text">Heart Rate Monitoring</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="feature-text">Weight Management</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="feature-text">Varied Workouts</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-text">Performance Tracking</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Weekly Schedule</h3>
+                <ul class="schedule-list">
+                    <li class="schedule-item">
+                        <div class="schedule-day">Tuesday</div>
+                        <div class="schedule-time">7:00 AM - 8:00 AM | 6:00 PM - 7:00 PM</div>
+                    </li>
+                    <li class="schedule-item">
+                        <div class="schedule-day">Thursday</div>
+                        <div class="schedule-time">7:00 AM - 8:00 AM | 6:00 PM - 7:00 PM</div>
+                    </li>
+                    <li class="schedule-item">
+                        <div class="schedule-day">Saturday</div>
+                        <div class="schedule-time">9:00 AM - 10:00 AM</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">Your Trainer</h3>
+                <div class="trainer-info">
+                    <div class="trainer-image">
+                        <img src="cardio fitness.jfif" alt="Gizachew Gezahegn" loading="lazy">
+                    </div>
+                    <div class="trainer-details">
+                        <h4>Gizachew Gezahegn</h4>
+                        <p>Certified Personal Trainer specializing in cardiovascular fitness and HIIT training with 10+ years of experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="modal-price">$30 <span>/6 weeks</span></div>
+            <button class="enroll-btn pulse">Enroll Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- How to Engage Modal -->
+<div id="engage-modal" class="engage-modal">
+    <div class="engage-container">
+        <div class="engage-header">
+            <h2 class="engage-title" id="engage-title">How to Engage: Program Name</h2>
+            <div class="engage-close"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="engage-body">
+            <p class="engage-description" id="engage-description">
+                Learn how to properly engage in this program with our step-by-step guide. Follow along with the video demonstration and read through the detailed instructions below.
+            </p>
+            <div class="engage-video-container" id="engage-video-container">
+                <!-- Video will be dynamically inserted here -->
+            </div>
+            <div class="engage-steps" id="engage-steps">
+                <!-- Steps will be dynamically inserted here -->
+            </div>
+        </div>
+        <div class="engage-footer">
+            <p class="engage-footer-text">Want to keep this guide for reference?</p>
+            <button class="download-guide-btn">
+                <i class="fas fa-download"></i> Download Complete Guide
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Instructor Modal -->
+<div id="contact-modal" class="contact-modal">
+    <div class="contact-container">
+        <div class="contact-header">
+            <h2 class="contact-title">Contact Your Instructor</h2>
+            <div class="contact-close"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="contact-body">
+            <div class="contact-instructor-info" id="contact-instructor-info">
+                <!-- Instructor info will be dynamically inserted here -->
+            </div>
+            <div class="contact-methods">
+                <div class="contact-method" id="sms-method">
+                    <div class="contact-method-icon sms-icon">
+                        <i class="fas fa-sms"></i>
+                    </div>
+                    <div class="contact-method-details">
+                        <div class="contact-method-title">SMS Message</div>
+                        <div class="contact-method-description">Send a text message to your instructor</div>
+                    </div>
+                </div>
+                <div class="contact-method" id="call-method">
+                    <div class="contact-method-icon call-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-method-details">
+                        <div class="contact-method-title">Audio Call</div>
+                        <div class="contact-method-description">Start a voice call with your instructor</div>
+                    </div>
+                </div>
+                <div class="contact-method" id="video-method">
+                    <div class="contact-method-icon video-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="contact-method-details">
+                        <div class="contact-method-title">Video Call</div>
+                        <div class="contact-method-description">Start a video call with your instructor</div>
+                    </div>
+                </div>
+                <div class="contact-method" id="chat-method">
+                    <div class="contact-method-icon chat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="contact-method-details">
+                        <div class="contact-method-title">Live Chat</div>
+                        <div class="contact-method-description">Chat with your instructor in real-time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div id="login-modal" class="login-modal">
+    <div class="login-container">
+        <div class="login-header">
+            <h2 class="login-title">Login to PowerFit</h2>
+            <div class="login-close"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="login-body">
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="social-login">
+                <div class="social-login-title">Or continue with</div>
+                <div class="social-buttons">
+                    <button class="social-btn google-btn">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="social-btn apple-btn">
+                        <i class="fab fa-apple"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="signup-link">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add animation classes to elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(element => {
+            element.classList.add('animated');
+        });
+
+        // Program cards click event
+        const programCards = document.querySelectorAll('.program-card');
+        programCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Don't open modal if clicking on the Learn More button or Contact Instructor button or How to Engage button
+                if (e.target.classList.contains('learn-more-btn') || 
+                    e.target.parentElement.classList.contains('learn-more-btn') ||
+                    e.target.classList.contains('contact-instructor-btn') ||
+                    e.target.parentElement.classList.contains('contact-instructor-btn') ||
+                    e.target.classList.contains('how-to-engage-btn') ||
+                    e.target.parentElement.classList.contains('how-to-engage-btn')) {
+                    return;
+                }
+                
+                const programType = this.getAttribute('data-program');
+                openProgramModal(programType);
+            });
+        });
+
+        // View Program buttons click event
+        const viewButtons = document.querySelectorAll('.view-program');
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const programType = this.getAttribute('data-program');
+                openProgramModal(programType);
+            });
+        });
+
+        // Contact Instructor buttons click event
+        const contactButtons = document.querySelectorAll('.contact-instructor-btn');
+        contactButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const programType = this.getAttribute('data-program');
+                openContactModal(programType);
+            });
+        });
+
+        // How to Engage buttons click event
+        const engageButtons = document.querySelectorAll('.how-to-engage-btn');
+        engageButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const programType = this.getAttribute('data-program');
+                openEngageModal(programType);
+            });
+        });
+
+        // Login button click event
+        const loginBtn = document.getElementById('loginBtn');
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openLoginModal();
+        });
+
+        // Close modal buttons
+        const closeButtons = document.querySelectorAll('.modal-close, .login-close, .contact-close, .engage-close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                closeAllModals();
+            });
+        });
+
+        // Close modal when clicking outside
+        const modals = document.querySelectorAll('.modal, .login-modal, .contact-modal, .engage-modal');
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeAllModals();
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+
+        // Contact methods click events
+        const contactMethods = document.querySelectorAll('.contact-method');
+        contactMethods.forEach(method => {
+            method.addEventListener('click', function() {
+                const methodId = this.id;
+                const instructorName = document.querySelector('#contact-instructor-info h4').textContent;
+                
+                switch(methodId) {
+                    case 'sms-method':
+                        alert(`SMS messaging with ${instructorName} initiated. You will receive a text message shortly.`);
+                        break;
+                    case 'call-method':
+                        alert(`Audio call with ${instructorName} initiated. Connecting...`);
+                        break;
+                    case 'video-method':
+                        alert(`Video call with ${instructorName} initiated. Connecting...`);
+                        break;
+                    case 'chat-method':
+                        alert(`Live chat with ${instructorName} initiated. Chat window opening...`);
+                        break;
+                }
+                
+                closeAllModals();
+            });
+        });
+
+        // Download guide button click event
+        const downloadGuideBtn = document.querySelector('.download-guide-btn');
+        downloadGuideBtn.addEventListener('click', function() {
+            const programTitle = document.getElementById('engage-title').textContent.replace('How to Engage: ', '');
+            alert(`Downloading complete guide for ${programTitle}. Your download will begin shortly.`);
+        });
+
+        // Function to open program modal
+        function openProgramModal(programType) {
+            closeAllModals();
+            const modal = document.getElementById(`${programType}-modal`);
+            if (modal) {
+                document.body.style.overflow = 'hidden';
+                modal.classList.add('active');
+            }
+        }
+
+        // Function to open contact modal
+        function openContactModal(programType) {
+            closeAllModals();
+            const contactModal = document.getElementById('contact-modal');
+            document.body.style.overflow = 'hidden';
+            contactModal.classList.add('active');
+            
+            // Get instructor info based on program type
+            let instructorName, instructorImage, instructorDescription;
+            
+            switch(programType) {
+                case 'strength':
+                    instructorName = 'John Davis';
+                    instructorImage = 'https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80';
+                    instructorDescription = 'Certified Strength & Conditioning Specialist with 10+ years of experience';
+                    break;
+                case 'cardio':
+                    instructorName = 'Sarah Johnson';
+                    instructorImage = 'https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80';
+                    instructorDescription = 'Certified Personal Trainer specializing in cardiovascular fitness';
+                    break;
+                case 'yoga':
+                    instructorName = 'Maya Patel';
+                    instructorImage = 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80';
+                    instructorDescription = 'Certified Yoga Instructor with 12+ years of experience';
+                    break;
+                case 'group':
+                    instructorName = 'Group Fitness Team';
+                    instructorImage = 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
+                    instructorDescription = 'Our team of certified group fitness instructors';
+                    break;
+                case 'hiit':
+                    instructorName = 'Alex Rodriguez';
+                    instructorImage = 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80';
+                    instructorDescription = 'HIIT Specialist with 7+ years of experience';
+                    break;
+                case 'crossfit':
+                    instructorName = 'Mike Thompson';
+                    instructorImage = 'https://images.unsplash.com/photo-1546483875-ad9014c88eba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1082&q=80';
+                    instructorDescription = 'CrossFit Level 3 Trainer with 9+ years of experience';
+                    break;
+                case 'pilates':
+                    instructorName = 'Emma Wilson';
+                    instructorImage = 'https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80';
+                    instructorDescription = 'Certified Pilates Instructor with 10+ years of experience';
+                    break;
+                case 'sports':
+                    instructorName = 'Coach Williams';
+                    instructorImage = 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
+                    instructorDescription = 'Certified Strength & Conditioning Specialist with 15+ years of experience';
+                    break;
+                default:
+                    instructorName = 'PowerFit Instructor';
+                    instructorImage = 'https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80';
+                    instructorDescription = 'Certified Fitness Professional';
+            }
+            
+            // Update instructor info in the contact modal
+            const instructorInfoContainer = document.getElementById('contact-instructor-info');
+            instructorInfoContainer.innerHTML = `
+                <div class="contact-instructor-image">
+                    <img src="${instructorImage}" alt="${instructorName}" loading="lazy">
+                </div>
+                <div class="contact-instructor-details">
+                    <h4>${instructorName}</h4>
+                    <p>${instructorDescription}</p>
+                </div>
+            `;
+        }
+
+        // Function to open engage modal
+        function openEngageModal(programType) {
+            closeAllModals();
+            const engageModal = document.getElementById('engage-modal');
+            document.body.style.overflow = 'hidden';
+            engageModal.classList.add('active');
+            
+            // Get program info based on program type
+            let programTitle, programDescription, programVideo, programSteps;
+            
+            switch(programType) {
+                case 'strength':
+                    programTitle = 'Strength Training';
+                    programDescription = 'Learn how to properly engage in our Strength Training program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/U0bhE67HuDY" title="Strength Training Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Proper Warm-Up</h4>
+                                <p class="engage-step-description">Begin with 5-10 minutes of light cardio to increase blood flow to your muscles. Follow with dynamic stretches that mimic the movements you'll be performing in your workout.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Proper Form</h4>
+                                <p class="engage-step-description">Focus on maintaining proper form throughout each exercise. Start with lighter weights to master the technique before progressing to heavier loads.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Progressive Overload</h4>
+                                <p class="engage-step-description">Gradually increase the weight, reps, or sets over time to continue challenging your muscles and making progress.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Rest and Recovery</h4>
+                                <p class="engage-step-description">Allow 48-72 hours of recovery between training the same muscle groups. Ensure adequate sleep and nutrition to support muscle repair and growth.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'cardio':
+                    programTitle = 'Cardio Fitness';
+                    programDescription = 'Learn how to properly engage in our Cardio Fitness program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/PvEnWsPrL4w" title="Cardio Fitness Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Heart Rate Monitoring</h4>
+                                <p class="engage-step-description">Learn to monitor your heart rate to ensure you're working at the appropriate intensity. For most cardio workouts, aim for 70-85% of your maximum heart rate.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Interval Training</h4>
+                                <p class="engage-step-description">Incorporate intervals of higher intensity followed by recovery periods to maximize calorie burn and cardiovascular benefits.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Proper Breathing</h4>
+                                <p class="engage-step-description">Maintain a steady breathing pattern during cardio exercises. Focus on deep breaths to maximize oxygen intake.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Progression</h4>
+                                <p class="engage-step-description">Gradually increase duration and intensity over time to continue challenging your cardiovascular system and improving fitness.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'yoga':
+                    programTitle = 'Yoga & Flexibility';
+                    programDescription = 'Learn how to properly engage in our Yoga & Flexibility program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/v7AYKMP6rOE" title="Yoga Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Breathing Techniques</h4>
+                                <p class="engage-step-description">Learn proper breathing techniques (pranayama) to enhance your yoga practice. Focus on deep, controlled breaths through the nose.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Proper Alignment</h4>
+                                <p class="engage-step-description">Focus on proper alignment in each pose to prevent injury and maximize benefits. Use props like blocks and straps when needed.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Mindfulness</h4>
+                                <p class="engage-step-description">Practice mindfulness during your yoga sessions by staying present and focusing on the sensations in your body.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Consistency</h4>
+                                <p class="engage-step-description">Maintain a consistent practice schedule to see improvements in flexibility, balance, and mental wellbeing.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'group':
+                    programTitle = 'Group Classes';
+                    programDescription = 'Learn how to properly engage in our Group Classes program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/UBMk30rjy0o" title="Group Fitness Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Class Preparation</h4>
+                                <p class="engage-step-description">Arrive 10-15 minutes early to set up your space and introduce yourself to the instructor. Bring water and a towel.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Modifications</h4>
+                                <p class="engage-step-description">Don't hesitate to use modifications if needed. The instructor can provide options for different fitness levels.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Energy Management</h4>
+                                <p class="engage-step-description">Pace yourself throughout the class. It's better to maintain good form with lower intensity than to compromise form for higher intensity.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Community Engagement</h4>
+                                <p class="engage-step-description">Engage with the community aspect of group fitness. Introduce yourself to other participants and support each other during challenging moments.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'hiit':
+                    programTitle = 'HIIT Training';
+                    programDescription = 'Learn how to properly engage in our HIIT Training program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/ml6cT4AZdqI" title="HIIT Training Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Intensity Management</h4>
+                                <p class="engage-step-description">During work intervals, aim to reach 80-90% of your maximum effort. This should feel challenging but sustainable for the short duration.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Recovery Periods</h4>
+                                <p class="engage-step-description">Use recovery periods effectively by continuing to move at a lower intensity rather than stopping completely. This active recovery helps maintain elevated heart rate.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Form Focus</h4>
+                                <p class="engage-step-description">Maintain proper form even during high-intensity intervals. If form begins to break down, reduce intensity rather than risking injury.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Progressive Overload</h4>
+                                <p class="engage-step-description">Gradually increase intensity, duration, or decrease rest periods as your fitness improves to continue challenging your body.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'crossfit':
+                    programTitle = 'CrossFit';
+                    programDescription = 'Learn how to properly engage in our CrossFit program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/mlVrkiCoKkg" title="CrossFit Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Skill Development</h4>
+                                <p class="engage-step-description">Focus on developing proper technique for all movements before adding intensity or weight. Attend skill sessions and ask coaches for feedback.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Scaling Options</h4>
+                                <p class="engage-step-description">Learn appropriate scaling options for each movement. Don't hesitate to scale workouts to match your current fitness level and skill set.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Pacing Strategies</h4>
+                                <p class="engage-step-description">Develop effective pacing strategies for different types of workouts (AMRAP, For Time, EMOM). Learn to manage your energy throughout the entire workout.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Community Engagement</h4>
+                                <p class="engage-step-description">Engage with the CrossFit community. Participate in partner workouts, competitions, and social events to enhance motivation and enjoyment.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'pilates':
+                    programTitle = 'Pilates';
+                    programDescription = 'Learn how to properly engage in our Pilates program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/K56Z12XNQ5c" title="Pilates Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Core Engagement</h4>
+                                <p class="engage-step-description">Learn to properly engage your core by drawing your navel toward your spine. This "navel to spine" action is fundamental to all Pilates exercises.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Breathing Technique</h4>
+                                <p class="engage-step-description">Practice lateral breathing, expanding your ribcage sideways while keeping your core engaged. Coordinate breath with movement for maximum benefit.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Precision and Control</h4>
+                                <p class="engage-step-description">Focus on precision and control rather than repetitions. Each movement should be deliberate and controlled throughout the entire range of motion.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Progression</h4>
+                                <p class="engage-step-description">Progress gradually through different levels of exercises. Master the basics before moving on to more advanced variations.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'sports':
+                    programTitle = 'Sports Conditioning';
+                    programDescription = 'Learn how to properly engage in our Sports Conditioning program with this step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/7J3jmgoWXlg" title="Sports Conditioning Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Sport-Specific Assessment</h4>
+                                <p class="engage-step-description">Participate in the initial assessment to identify strengths, weaknesses, and specific areas for improvement related to your sport.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Movement Patterns</h4>
+                                <p class="engage-step-description">Focus on mastering the fundamental movement patterns specific to your sport. Proper technique is essential before adding speed or resistance.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Energy System Development</h4>
+                                <p class="engage-step-description">Understand the primary energy systems used in your sport and train accordingly. Different sports require different combinations of aerobic and anaerobic conditioning.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Periodization</h4>
+                                <p class="engage-step-description">Follow the periodized training plan designed for your sport's competitive season. Training intensity and volume will vary based on pre-season, in-season, and off-season phases.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                default:
+                    programTitle = 'Fitness Program';
+                    programDescription = 'Learn how to properly engage in this fitness program with our step-by-step guide. Follow along with the animated demonstration and read through the detailed instructions below.';
+                    programVideo = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/UItWltVZZmE" title="Fitness Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    programSteps = `
+                        <div class="engage-step">
+                            <div class="engage-step-number">1</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Proper Form</h4>
+                                <p class="engage-step-description">Focus on maintaining proper form throughout all exercises to maximize results and prevent injury.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">2</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Consistency</h4>
+                                <p class="engage-step-description">Maintain a consistent workout schedule to see progress and results over time.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">3</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Nutrition</h4>
+                                <p class="engage-step-description">Support your training with proper nutrition to fuel workouts and aid recovery.</p>
+                            </div>
+                        </div>
+                        <div class="engage-step">
+                            <div class="engage-step-number">4</div>
+                            <div class="engage-step-content">
+                                <h4 class="engage-step-title">Rest and Recovery</h4>
+                                <p class="engage-step-description">Allow adequate time for rest and recovery between workouts to prevent overtraining and promote adaptation.</p>
+                            </div>
+                        </div>
+                    `;
+            }
+            
+            // Update program info in the engage modal
+            document.getElementById('engage-title').textContent = `How to Engage: ${programTitle}`;
+            document.getElementById('engage-description').textContent = programDescription;
+            document.getElementById('engage-video-container').innerHTML = programVideo;
+            document.getElementById('engage-steps').innerHTML = programSteps;
+        }
+
+        // Function to open login modal
+        function openLoginModal() {
+            closeAllModals();
+            const loginModal = document.getElementById('login-modal');
+            document.body.style.overflow = 'hidden';
+            loginModal.classList.add('active');
+        }
+
+        // Function to close all modals
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal, .login-modal, .contact-modal, .engage-modal');
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
+
+        // FAQ accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', function() {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Enroll button click event
+        const enrollButtons = document.querySelectorAll('.enroll-btn');
+        enrollButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Thank you for your interest! Our team will contact you shortly to complete your enrollment.');
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.glow-text {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff5f6d, 0 0 30px #ffc371;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #ff5f6d, 0 0 30px #ffc371; }
+    to { text-shadow: 0 0 20px #fff, 0 0 40px #ff5f6d, 0 0 60px #ffc371; }
+}
+
+.heart-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.join-btn {
+    background: #ff5f6d;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 40px;
+    transition: 0.3s;
+}
+
+.join-btn:hover {
+    background: #ffc371;
+}
+
+.booking-form {
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    text-align: left;
+    animation: slideUp 1s ease;
+}
+
+.booking-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.booking-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.booking-form select,
+.booking-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+#book-btn {
+    background: #ff5f6d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#book-btn:hover {
+    background: #ffc371;
+}
+
+.confirmation {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+}
+
+.policies {
+    margin-top: 25px;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.policies ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+#sub-services-container {
+    margin-bottom: 15px;
+}
+
+.sub-service {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background: #f7f7f7;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}

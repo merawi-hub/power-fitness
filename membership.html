@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary: #ff5722;
+            --primary-dark: #e64a19;
+            --secondary: #2196f3;
+            --secondary-dark: #1976d2;
+            --success: #754caf;
+            --danger: #f44336;
+            --warning: #ff9800;
+            --dark: #333;
+            --light: #f5f5f5;
+            --gray: #9e9e9e;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .progress-container {
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 4px;
+            width: 100%;
+            background-color: var(--gray);
+            z-index: 1;
+        }
+
+        .progress-bar .progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 4px;
+            background-color: var(--primary);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+
+        .step {
+            width: 30px;
+            height: 30px;
+            background-color: var(--white);
+            border: 3px solid var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--gray);
+            position: relative;
+            z-index: 3;
+            transition: var(--transition);
+        }
+
+        .step.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: var(--white);
+        }
+
+        .step.completed {
+            border-color: var(--primary);
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .step-label {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: var(--gray);
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .step.active .step-label,
+        .step.completed .step-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-container {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .form-section {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        .form-col {
+            flex: 1;
+            padding: 0 10px;
+            min-width: 250px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+            outline: none;
+        }
+
+        .form-control.error {
+            border-color: var(--danger);
+            animation: shake 0.5s;
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .checkbox-group {
+            margin-top: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-item input[type="radio"] {
+            margin-right: 8px;
+            accent-color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        /* ===== PAYMENT SECTION ===== */
+        .payment-summary {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-summary h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+        }
+
+        .payment-link {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .payment-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .payment-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .payment-button i {
+            margin-right: 10px;
+        }
+
+        .terms-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+        }
+
+        /* ===== SUCCESS SECTION ===== */
+        .success-container {
+            text-align: center;
+            padding: 50px 30px;
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .success-title {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reminder-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-radius: var(--border-radius);
+        }
+
+        .reminder-box h3 {
+            color: var(--success);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .reminder-box p {
+            color: var(--dark);
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .form-col {
+                flex: 100%;
+                margin-bottom: 15px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .step-label {
+                display: none;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--white);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Power Fit Registration</h1>
+            <p>Join our fitness community and start your journey to a healthier lifestyle</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+                <div class="step active" data-step="1">
+                    1
+                    <span class="step-label">Personal Info</span>
+                </div>
+                <div class="step" data-step="2">
+                    2
+                    <span class="step-label">Physical Details</span>
+                </div>
+                <div class="step" data-step="3">
+                    3
+                    <span class="step-label">Programs</span>
+                </div>
+                <div class="step" data-step="4">
+                    4
+                    <span class="step-label">Contact</span>
+                </div>
+                <div class="step" data-step="5">
+                    5
+                    <span class="step-label">Payment</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="membershipForm">
+                <!-- Section 1: Personal Information -->
+                <div class="form-section active" id="section1">
+                    <h2><i class="fas fa-user"></i> Personal Information</h2>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                <div class="error-message" id="firstNameError">Please enter your first name</div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                <div class="error-message" id="lastNameError">Please enter your last name</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" min="16" max="100" class="form-control" required>
+                                <div class="error-message" id="ageError">Please enter a valid age (16-100)</div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="male" name="gender" value="male" required>
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="other" name="gender" value="other">
+                                        <label for="other">Other</label>
+                                    </div>
+                                </div>
+                                <div class="error-message" id="genderError">Please select your gender</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div></div> <!-- Empty div for spacing -->
+                        <button type="button" class="btn btn-primary" id="nextBtn1">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Physical Information -->
+                <div class="form-section" id="section2">
+                    <h2><i class="fas fa-weight"></i> Physical Information</h2>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="currentWeight">Current Weight (kg)</label>
+                                <input type="number" id="currentWeight" name="currentWeight" min="30" max="300" class="form-control" required>
+                                <div class="error-message" id="currentWeightError">Please enter a valid weight</div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="intendedWeight">Goal Weight (kg)</label>
+                                <input type="number" id="intendedWeight" name="intendedWeight" min="30" max="300" class="form-control" required>
+                                <div class="error-message" id="intendedWeightError">Please enter a valid weight</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" name="height" min="100" max="250" class="form-control" required>
+                                <div class="error-message" id="heightError">Please enter a valid height</div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="fitnessLevel">Fitness Level</label>
+                                <select id="fitnessLevel" name="fitnessLevel" class="form-control" required>
+                                    <option value="">Select your fitness level</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                                <div class="error-message" id="fitnessLevelError">Please select your fitness level</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prevBtn2">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn2">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Program Selection -->
+                <div class="form-section" id="section3">
+                    <h2><i class="fas fa-dumbbell"></i> Program Selection</h2>
+                    <div class="form-group">
+                        <label>Select Programs</label>
+                        <p>Choose the programs you want to join:</p>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="cardio" name="programs" value="cardio">
+                                <label for="cardio">Cardio</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="yoga" name="programs" value="yoga">
+                                <label for="yoga">Yoga</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="flexibility" name="programs" value="flexibility">
+                                <label for="flexibility">Flexibility</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="strength" name="programs" value="strength">
+                                <label for="strength">Strength Training</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="all" name="programs" value="all">
+                                <label for="all">All Programs</label>
+                            </div>
+                        </div>
+                        <div class="error-message" id="programsError">Please select at least one program</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registrationDate">Registration Date</label>
+                        <input type="date" id="registrationDate" name="registrationDate" class="form-control" required>
+                        <div class="error-message" id="registrationDateError">Please select a registration date</div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prevBtn3">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn3">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 4: Contact Information -->
+                <div class="form-section" id="section4">
+                    <h2><i class="fas fa-address-card"></i> Contact Information</h2>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" class="form-control" required></textarea>
+                        <div class="error-message" id="addressError">Please enter your address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyContact">Emergency Contact</label>
+                        <input type="text" id="emergencyContact" name="emergencyContact" class="form-control" placeholder="Name, Relationship, Phone Number" required>
+                        <div class="error-message" id="emergencyContactError">Please provide emergency contact information</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="healthConditions">Health Conditions (Optional)</label>
+                        <textarea id="healthConditions" name="healthConditions" class="form-control" placeholder="List any health conditions, injuries, or special considerations..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prevBtn4">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn4">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 5: Payment Information -->
+                <div class="form-section" id="section5">
+                    <h2><i class="fas fa-credit-card"></i> Registration Payment</h2>
+                    
+                    <div class="payment-summary">
+                        <h3>Membership Summary</h3>
+                        <div class="summary-item">
+                            <span>Membership Type:</span>
+                            <span>Monthly</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Duration:</span>
+                            <span>1 Month</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Start Date:</span>
+                            <span id="summaryStartDate"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Renewal Date:</span>
+                            <span id="summaryRenewalDate"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Total Amount:</span>
+                            <span>$49.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-link">
+                        <a href="monthly pay.html"  class="payment-button">
+                            <i class="fas fa-credit-card"></i> Proceed to Payment
+                        </a>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="termsAccepted" name="termsAccepted" required>
+                            <label for="termsAccepted">I accept the terms and conditions</label>
+                        </div>
+                        <div class="error-message" id="termsAcceptedError">You must accept the terms and conditions</div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prevBtn5">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="submit" class="btn btn-success" id="submitBtn">
+                            <i class="fas fa-check-circle"></i> Complete Registration
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success Section -->
+            <div class="success-container" id="successSection">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2 class="success-title">Registration Successful!</h2>
+                <p class="success-message">Thank you for registering with our gym. Your membership is now active and you can start your fitness journey right away.</p>
+                
+                <div class="reminder-box">
+                    <h3><i class="fas fa-bell"></i> Payment Reminder</h3>
+                    <p>Your next payment of $49.99 is due on <span id="nextPaymentDate"></span>. We'll send you a reminder email before the due date.</p>
+                </div>
+                
+                <button type="button" class="btn btn-primary" id="dashboardBtn">
+                    <i class="fas fa-tachometer-alt"></i> Go to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="spinner-overlay" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set today as the default registration date
+            const today = new Date();
+            const formattedDate = today.toISOString().split('T')[0];
+            document.getElementById('registrationDate').value = formattedDate;
+            
+            // Update summary dates
+            updateSummaryDates();
+
+            // Variables
+            const sections = document.querySelectorAll('.form-section');
+            const steps = document.querySelectorAll('.step');
+            const progress = document.getElementById('progress');
+            const form = document.getElementById('membershipForm');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const successSection = document.getElementById('successSection');
+            let currentSection = 0;
+
+            // Initialize "All Programs" checkbox behavior
+            const allProgramsCheckbox = document.getElementById('all');
+            const programCheckboxes = document.querySelectorAll('input[name="programs"]');
+            
+            allProgramsCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    programCheckboxes.forEach(checkbox => {
+                        if (checkbox.id !== 'all') {
+                            checkbox.checked = false;
+                            checkbox.disabled = true;
+                        }
+                    });
+                } else {
+                    programCheckboxes.forEach(checkbox => {
+                        if (checkbox.id !== 'all') {
+                            checkbox.disabled = false;
+                        }
+                    });
+                }
+            });
+
+            programCheckboxes.forEach(checkbox => {
+                if (checkbox.id !== 'all') {
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            allProgramsCheckbox.checked = false;
+                        }
+                    });
+                }
+            });
+
+            // Navigation functions
+            function showSection(n) {
+                sections.forEach(section => section.classList.remove('active'));
+                sections[n].classList.add('active');
+                
+                updateSteps(n);
+                updateProgress(n);
+                
+                // Scroll to top of form
+                document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function updateSteps(n) {
+                steps.forEach((step, idx) => {
+                    if (idx < n) {
+                        step.classList.add('completed');
+                        step.classList.remove('active');
+                    } else if (idx === n) {
+                        step.classList.add('active');
+                        step.classList.remove('completed');
+                    } else {
+                        step.classList.remove('active', 'completed');
+                    }
+                });
+            }
+
+            function updateProgress(n) {
+                const progressWidth = (n / (steps.length - 1)) * 100;
+                progress.style.width = progressWidth + '%';
+            }
+
+            function updateSummaryDates() {
+                const registrationDate = document.getElementById('registrationDate').value;
+                if (registrationDate) {
+                    const startDate = new Date(registrationDate);
+                    const renewalDate = new Date(startDate);
+                    renewalDate.setMonth(renewalDate.getMonth() + 1);
+                    
+                    document.getElementById('summaryStartDate').textContent = formatDate(startDate);
+                    document.getElementById('summaryRenewalDate').textContent = formatDate(renewalDate);
+                    document.getElementById('nextPaymentDate').textContent = formatDate(renewalDate);
+                }
+            }
+
+            function formatDate(date) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
+
+            // Validation functions
+            function validateSection(sectionIndex) {
+                let isValid = true;
+                
+                // Reset all error messages
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.classList.remove('visible');
+                });
+                document.querySelectorAll('.form-control').forEach(el => {
+                    el.classList.remove('error');
+                });
+                
+                // Section 1: Personal Information
+                if (sectionIndex === 0) {
+                    const firstName = document.getElementById('firstName');
+                    const lastName = document.getElementById('lastName');
+                    const age = document.getElementById('age');
+                    const genderInputs = document.querySelectorAll('input[name="gender"]');
+                    
+                    if (!firstName.value.trim()) {
+                        showError(firstName, 'firstNameError');
+                        isValid = false;
+                    }
+                    
+                    if (!lastName.value.trim()) {
+                        showError(lastName, 'lastNameError');
+                        isValid = false;
+                    }
+                    
+                    if (!age.value || age.value < 16 || age.value > 100) {
+                        showError(age, 'ageError');
+                        isValid = false;
+                    }
+                    
+                    let genderSelected = false;
+                    genderInputs.forEach(input => {
+                        if (input.checked) genderSelected = true;
+                    });
+                    
+                    if (!genderSelected) {
+                        document.getElementById('genderError').classList.add('visible');
+                        isValid = false;
+                    }
+                }
+                
+                // Section 2: Physical Information
+                else if (sectionIndex === 1) {
+                    const currentWeight = document.getElementById('currentWeight');
+                    const intendedWeight = document.getElementById('intendedWeight');
+                    const height = document.getElementById('height');
+                    const fitnessLevel = document.getElementById('fitnessLevel');
+                    
+                    if (!currentWeight.value || currentWeight.value < 30 || currentWeight.value > 300) {
+                        showError(currentWeight, 'currentWeightError');
+                        isValid = false;
+                    }
+                    
+                    if (!intendedWeight.value || intendedWeight.value < 30 || intendedWeight.value > 300) {
+                        showError(intendedWeight, 'intendedWeightError');
+                        isValid = false;
+                    }
+                    
+                    if (!height.value || height.value < 100 || height.value > 250) {
+                        showError(height, 'heightError');
+                        isValid = false;
+                    }
+                    
+                    if (!fitnessLevel.value) {
+                        showError(fitnessLevel, 'fitnessLevelError');
+                        isValid = false;
+                    }
+                }
+                
+                // Section 3: Program Selection
+                else if (sectionIndex === 2) {
+                    const programCheckboxes = document.querySelectorAll('input[name="programs"]');
+                    const registrationDate = document.getElementById('registrationDate');
+                    
+                    let programSelected = false;
+                    programCheckboxes.forEach(checkbox => {
+                        if (checkbox.checked) programSelected = true;
+                    });
+                    
+                    if (!programSelected) {
+                        document.getElementById('programsError').classList.add('visible');
+                        isValid = false;
+                    }
+                    
+                    if (!registrationDate.value) {
+                        showError(registrationDate, 'registrationDateError');
+                        isValid = false;
+                    }
+                }
+                
+                // Section 4: Contact Information
+                else if (sectionIndex === 3) {
+                    const phone = document.getElementById('phone');
+                    const email = document.getElementById('email');
+                    const address = document.getElementById('address');
+                    const emergencyContact = document.getElementById('emergencyContact');
+                    
+                    if (!phone.value || !validatePhone(phone.value)) {
+                        showError(phone, 'phoneError');
+                        isValid = false;
+                    }
+                    
+                    if (!email.value || !validateEmail(email.value)) {
+                        showError(email, 'emailError');
+                        isValid = false;
+                    }
+                    
+                    if (!address.value.trim()) {
+                        showError(address, 'addressError');
+                        isValid = false;
+                    }
+                    
+                    if (!emergencyContact.value.trim()) {
+                        showError(emergencyContact, 'emergencyContactError');
+                        isValid = false;
+                    }
+                }
+                
+                // Section 5: Payment Information
+                else if (sectionIndex === 4) {
+                    const termsAccepted = document.getElementById('termsAccepted');
+                    
+                    if (!termsAccepted.checked) {
+                        document.getElementById('termsAcceptedError').classList.add('visible');
+                        isValid = false;
+                    }
+                }
+                
+                return isValid;
+            }
+
+            function showError(inputElement, errorId) {
+                inputElement.classList.add('error');
+                document.getElementById(errorId).classList.add('visible');
+            }
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function validatePhone(phone) {
+                const re = /^\+?[0-9\s\-()]{10,20}$/;
+                return re.test(phone);
+            }
+
+            // Event listeners for navigation
+            document.getElementById('nextBtn1').addEventListener('click', function() {
+                if (validateSection(0)) {
+                    currentSection = 1;
+                    showSection(currentSection);
+                }
+            });
+
+            document.getElementById('prevBtn2').addEventListener('click', function() {
+                currentSection = 0;
+                showSection(currentSection);
+            });
+
+            document.getElementById('nextBtn2').addEventListener('click', function() {
+                if (validateSection(1)) {
+                    currentSection = 2;
+                    showSection(currentSection);
+                }
+            });
+
+            document.getElementById('prevBtn3').addEventListener('click', function() {
+                currentSection = 1;
+                showSection(currentSection);
+            });
+
+            document.getElementById('nextBtn3').addEventListener('click', function() {
+                if (validateSection(2)) {
+                    currentSection = 3;
+                    showSection(currentSection);
+                    updateSummaryDates();
+                }
+            });
+
+            document.getElementById('prevBtn4').addEventListener('click', function() {
+                currentSection = 2;
+                showSection(currentSection);
+            });
+
+            document.getElementById('nextBtn4').addEventListener('click', function() {
+                if (validateSection(3)) {
+                    currentSection = 4;
+                    showSection(currentSection);
+                }
+            });
+
+            document.getElementById('prevBtn5').addEventListener('click', function() {
+                currentSection = 3;
+                showSection(currentSection);
+            });
+
+            // Update summary when registration date changes
+            document.getElementById('registrationDate').addEventListener('change', updateSummaryDates);
+
+            // Payment link handler - you can modify this to link to your payment page
+            document.getElementById('paymentLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                // You can replace this with your actual payment page URL
+                alert('This would redirect to your payment page. You can modify this link to point to your existing payment system.');
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateSection(4)) {
+                    // Show loading spinner
+                    loadingSpinner.style.display = 'flex';
+                    
+                    // Simulate form submission
+                    setTimeout(function() {
+                        // Hide loading spinner
+                        loadingSpinner.style.display = 'none';
+                        
+                        // Hide form and show success message
+                        document.querySelector('.form-section.active').classList.remove('active');
+                        successSection.style.display = 'block';
+                        
+                        // Update progress bar to complete
+                        updateProgress(steps.length - 1);
+                        updateSteps(steps.length - 1);
+                        
+                        // Add animation to success section
+                        successSection.style.animation = 'fadeIn 0.8s ease-out';
+                    }, 2000);
+                }
+            });
+
+            // Dashboard button (for demo purposes)
+            document.getElementById('dashboardBtn').addEventListener('click', function() {
+                alert('This would redirect to the dashboard in a real application.');
+            });
+
+            // Step navigation
+            steps.forEach((step, idx) => {
+                step.addEventListener('click', function() {
+                    // Only allow clicking on completed steps or the next available step
+                    if (idx <= currentSection + 1 && idx !== currentSection) {
+                        // Validate current section if trying to move forward
+                        if (idx > currentSection && !validateSection(currentSection)) {
+                            return;
+                        }
+                        
+                        currentSection = idx;
+                        showSection(currentSection);
+                    }
+                });
+            });
+
+            // Initialize with animations
+            document.querySelectorAll('.form-section')[0].style.animation = 'slideIn 0.5s ease-out';
+        });
+    </script>
+</body>
+</html>

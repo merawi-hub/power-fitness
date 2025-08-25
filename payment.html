@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit - Monthly Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff5722;
+            --primary-dark: #e64a19;
+            --primary-light: #ffccbc;
+            --secondary: #2196f3;
+            --secondary-dark: #1976d2;
+            --secondary-light: #bbdefb;
+            --success: #4caf50;
+            --success-dark: #388e3c;
+            --success-light: #c8e6c9;
+            --warning: #ff9800;
+            --warning-dark: #f57c00;
+            --warning-light: #ffe0b2;
+            --danger: #f44336;
+            --danger-dark: #d32f2f;
+            --danger-light: #ffcdd2;
+            --dark: #212121;
+            --gray-dark: #616161;
+            --gray: #9e9e9e;
+            --gray-light: #e0e0e0;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--gray-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .payment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .payment-summary {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .summary-label {
+            color: var(--gray-dark);
+        }
+
+        .summary-value {
+            font-weight: 500;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .membership-details {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .membership-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .membership-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .membership-label {
+            color: var(--gray-dark);
+        }
+
+        .membership-value {
+            font-weight: 500;
+        }
+
+        .payment-form-container {
+            flex: 2;
+            min-width: 500px;
+        }
+
+        .payment-form {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+        }
+
+        .form-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .payment-method input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .payment-method label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background-color: var(--light);
+            border: 2px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-method input[type="radio"]:checked + label {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .payment-method-icon {
+            font-size: 1.8rem;
+            color: var(--gray-dark);
+        }
+
+        .payment-method input[type="radio"]:checked + label .payment-method-icon {
+            color: var(--primary);
+        }
+
+        .payment-method-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--gray-dark);
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .form-control.error {
+            border-color: var(--danger);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            color: var(--gray-dark);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger-dark);
+        }
+
+        .payment-section {
+            display: none;
+        }
+
+        .payment-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Receipt Styles */
+        .receipt {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .receipt.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .receipt-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .receipt-logo img {
+            height: 60px;
+        }
+
+        .receipt-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .receipt-info {
+            text-align: right;
+        }
+
+        .receipt-number {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .receipt-date {
+            color: var(--gray-dark);
+        }
+
+        .receipt-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .receipt-section {
+            margin-bottom: 25px;
+        }
+
+        .receipt-section-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .receipt-label {
+            color: var(--gray-dark);
+        }
+
+        .receipt-value {
+            font-weight: 500;
+        }
+
+        .receipt-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .receipt-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+            text-align: center;
+        }
+
+        .receipt-message {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .receipt-note {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .receipt-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--success-dark);
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 25px;
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .loading-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Crypto Selection Styles */
+        .crypto-options {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .crypto-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .crypto-option input[type="radio"] {
+            margin: 0;
+        }
+
+        .crypto-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+
+        .crypto-name {
+            font-size: 0.9rem;
+        }
+
+        /* Gym Policies Section */
+        .gym-policies {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .policies-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .policies-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .policies-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .policies-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Payment History Styles */
+        .payment-history {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            max-width: 800px;
+            margin: 40px auto;
+            display: none;
+        }
+
+        .payment-history.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .history-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .history-empty {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .history-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .history-item {
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .history-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .history-item-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .history-item-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .history-item-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .history-item-amount {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .history-item-method {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        .history-item-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .status-completed {
+            background-color: var(--success-light);
+            color: var(--success-dark);
+        }
+
+        .status-pending {
+            background-color: var(--warning-light);
+            color: var(--warning-dark);
+        }
+
+        .history-details {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .history-details.show {
+            display: block;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .history-details-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .history-details-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .history-details-label {
+            width: 40%;
+            color: var(--gray-dark);
+            font-weight: 500;
+        }
+
+        .history-details-value {
+            width: 60%;
+            color: var(--dark);
+        }
+
+        .history-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .history-actions-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .history-actions-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Post-payment actions */
+        .post-payment-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .payment-container {
+                flex-direction: column-reverse;
+            }
+
+            .payment-summary {
+                position: static;
+            }
+
+            .payment-form-container {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .payment-methods {
+                flex-wrap: wrap;
+            }
+
+            .payment-method {
+                min-width: calc(50% - 10px);
+            }
+
+            .receipt-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .receipt-info {
+                text-align: center;
+            }
+
+            .receipt-actions {
+                flex-direction: column;
+            }
+
+            .crypto-options {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .history-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .history-actions-left,
+            .history-actions-right {
+                justify-content: center;
+            }
+
+            .post-payment-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .form-group {
+                min-width: 100%;
+            }
+
+            .payment-method {
+                min-width: 100%;
+            }
+
+            .crypto-options {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .history-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .history-details-row {
+                flex-direction: column;
+            }
+
+            .history-details-label,
+            .history-details-value {
+                width: 100%;
+            }
+
+            .history-details-label {
+                margin-bottom: 5px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .receipt, .receipt * {
+                visibility: visible;
+            }
+
+            .receipt {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+
+            .receipt-actions {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-dumbbell" style="font-size: 24px; color: var(--primary);"></i>
+                    <span class="logo-text">POWER<span style="color: var(--primary-dark);">FIT</span></span>
+                </a>
+                <div>
+                    <a href="#" class="back-link" id="viewPaymentHistory">
+                        <i class="fas fa-history"></i>
+                        <span>Payment History</span>
+                    </a>
+                    <a href="new Gym.html" class="back-link" id="backToMain" style="margin-left: 20px;">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">Complete Your Monthly Payment</h1>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2 class="success-title">Payment Successful!</h2>
+                <p class="success-text">Your membership has been renewed successfully for another month.</p>
+                <p class="success-text">A confirmation email has been sent to your email address with all the details.</p>
+                <div style="margin-top: 30px;">
+                    <button class="btn" id="viewReceiptBtn">
+                        <i class="fas fa-receipt"></i> View Receipt
+                    </button>
+                    <button class="btn btn-secondary" id="backToPaymentFormBtn" style="margin-left: 15px;">
+                        <i class="fas fa-arrow-left"></i> Back to Form
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Container -->
+            <div class="payment-container" id="paymentContainer">
+                <!-- Payment Summary -->
+                <div class="payment-summary">
+                    <h2 class="summary-title">Payment Summary</h2>
+                    <div class="summary-item">
+                        <span class="summary-label">Membership Plan:</span>
+                        <span class="summary-value" id="summaryPlan">Standard Monthly</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Duration:</span>
+                        <span class="summary-value" id="summaryDuration">1 Month</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Base Price:</span>
+                        <span class="summary-value" id="summaryBasePrice">$79.99</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Tax (7%):</span>
+                        <span class="summary-value" id="summaryTax">$5.60</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="summaryTotal">$85.59</span>
+                    </div>
+
+                    <div class="membership-details">
+                        <h3 class="membership-title">Standard Monthly Membership</h3>
+                        <div class="membership-info">
+                            <span class="membership-label">Current Period:</span>
+                            <span class="membership-value" id="membershipCurrent">April 6 - May 6, 2025</span>
+                        </div>
+                        <div class="membership-info">
+                            <span class="membership-label">Next Period:</span>
+                            <span class="membership-value" id="membershipNext">May 6 - June 6, 2025</span>
+                        </div>
+                        <div class="membership-info">
+                            <span class="membership-label">Member Since:</span>
+                            <span class="membership-value">January 15, 2023</span>
+                        </div>
+                        <div class="membership-info">
+                            <span class="membership-label">Member ID:</span>
+                            <span class="membership-value">PF-2023-45678</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="payment-form-container">
+                    <div class="payment-form">
+                        <h2 class="form-title">Payment Information</h2>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="creditCard" value="creditCard" checked>
+                                <label for="creditCard">
+                                    <i class="fas fa-credit-card payment-method-icon"></i>
+                                    <span class="payment-method-name">Credit Card</span>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="paypal" value="paypal">
+                                <label for="paypal">
+                                    <i class="fab fa-paypal payment-method-icon"></i>
+                                    <span class="payment-method-name">PayPal</span>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
+                                <label for="bankTransfer">
+                                    <i class="fas fa-university payment-method-icon"></i>
+                                    <span class="payment-method-name">Bank Transfer</span>
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="applePay" value="applePay">
+                                <label for="applePay">
+                                    <i class="fab fa-apple-pay payment-method-icon"></i>
+                                    <span class="payment-method-name">Apple Pay</span>
+                                </label>
+                            </div>
+                            <!-- Pay at Gym House -->
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="payAtGym" value="payAtGym">
+                                <label for="payAtGym">
+                                    <i class="fas fa-store payment-method-icon"></i>
+                                    <span class="payment-method-name">Pay at Gym</span>
+                                </label>
+                            </div>
+                            <!-- Cryptocurrency -->
+                            <div class="payment-method">
+                                <input type="radio" name="paymentMethod" id="crypto" value="crypto">
+                                <label for="crypto">
+                                    <i class="fab fa-bitcoin payment-method-icon"></i>
+                                    <span class="payment-method-name">Cryptocurrency</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card Section -->
+                        <div class="payment-section active" id="creditCardSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Card Information</h3>
+                                <div class="card-icons">
+                                    <i class="fab fa-cc-visa card-icon"></i>
+                                    <i class="fab fa-cc-mastercard card-icon"></i>
+                                    <i class="fab fa-cc-amex card-icon"></i>
+                                    <i class="fab fa-cc-discover card-icon"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardNumber" class="form-label">Card Number</label>
+                                    <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" value="**** **** **** 4567">
+                                    <div class="error-message" id="cardNumberError">Please enter a valid card number</div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiryDate" class="form-label">Expiry Date</label>
+                                        <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY" maxlength="5" value="09/26">
+                                        <div class="error-message" id="expiryDateError">Please enter a valid expiry date</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv" class="form-label">CVV</label>
+                                        <input type="text" id="cvv" class="form-control" placeholder="123" maxlength="4">
+                                        <div class="error-message" id="cvvError">Please enter a valid CVV</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardName" class="form-label">Name on Card</label>
+                                    <input type="text" id="cardName" class="form-control" placeholder="John Doe" value="John Doe">
+                                    <div class="error-message" id="cardNameError">Please enter the name on your card</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PayPal Section -->
+                        <div class="payment-section" id="paypalSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">PayPal Information</h3>
+                                <p style="margin-bottom: 15px;">You will be redirected to PayPal to complete your payment securely.</p>
+                                <div class="form-group">
+                                    <label for="paypalEmail" class="form-label">PayPal Email</label>
+                                    <input type="email" id="paypalEmail" class="form-control" placeholder="your-email@example.com" value="john.doe@example.com">
+                                    <div class="error-message" id="paypalEmailError">Please enter a valid email address</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Transfer Section -->
+                        <div class="payment-section" id="bankTransferSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Bank Transfer Information</h3>
+                                <p style="margin-bottom: 15px;">Please use the following details to make your bank transfer:</p>
+                                <div class="form-group">
+                                    <label class="form-label">Bank Name</label>
+                                    <input type="text" class="form-control" value="PowerFit Bank" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Account Name</label>
+                                    <input type="text" class="form-control" value="PowerFit Gym LLC" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Account Number</label>
+                                    <input type="text" class="form-control" value="1234567890" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Routing Number</label>
+                                    <input type="text" class="form-control" value="987654321" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Reference</label>
+                                    <input type="text" class="form-control" value="MEM-2025-45678" readonly>
+                                </div>
+                                <p style="margin-top: 15px; color: var(--warning-dark);">
+                                    <i class="fas fa-info-circle"></i> Please include the reference number in your transfer description.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Apple Pay Section -->
+                        <div class="payment-section" id="applePaySection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Apple Pay</h3>
+                                <p style="margin-bottom: 15px;">Click the button below to pay with Apple Pay:</p>
+                                <button type="button" class="btn btn-block" style="background-color: #000; margin-bottom: 15px;">
+                                    <i class="fab fa-apple"></i> Pay with Apple Pay
+                                </button>
+                                <p style="color: var(--gray-dark); font-size: 0.9rem;">
+                                    <i class="fas fa-info-circle"></i> Apple Pay is only available on compatible Apple devices.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pay at Gym Section -->
+                        <div class="payment-section" id="payAtGymSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Pay at Gym House</h3>
+                                <p style="margin-bottom: 15px;">You can complete your payment at our gym location:</p>
+                                <div class="form-group">
+                                    <label class="form-label">Gym Address</label>
+                                    <input type="text" class="form-control" value="123 Fitness Avenue, Cityville, State 12345" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Business Hours</label>
+                                    <input type="text" class="form-control" value="Monday-Friday: 6AM-10PM, Weekends: 8AM-8PM" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Payment Reference</label>
+                                    <input type="text" class="form-control" value="MEM-2025-45678" readonly>
+                                </div>
+                                <p style="margin-top: 15px; color: var(--warning-dark);">
+                                    <i class="fas fa-info-circle"></i> Please bring this Reference ID and your membership card to complete your payment at the gym.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Cryptocurrency Section -->
+                        <div class="payment-section" id="cryptoSection">
+                            <div class="form-section">
+                                <h3 class="form-section-title">Cryptocurrency Payment</h3>
+                                <p style="margin-bottom: 15px;">Select your preferred cryptocurrency:</p>
+                                
+                                <div class="crypto-options">
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="bitcoin" value="bitcoin" checked>
+                                        <label for="bitcoin">
+                                            <i class="fab fa-bitcoin crypto-icon" style="color: #f7931a;"></i>
+                                            <span class="crypto-name">Bitcoin (BTC)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="ethereum" value="ethereum">
+                                        <label for="ethereum">
+                                            <i class="fab fa-ethereum crypto-icon" style="color: #627eea;"></i>
+                                            <span class="crypto-name">Ethereum (ETH)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="litecoin" value="litecoin">
+                                        <label for="litecoin">
+                                            <i class="fab fa-litecoin crypto-icon" style="color: #345d9d;"></i>
+                                            <span class="crypto-name">Litecoin (LTC)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="dogecoin" value="dogecoin">
+                                        <label for="dogecoin">
+                                            <i class="fas fa-dog crypto-icon" style="color: #c2a633;"></i>
+                                            <span class="crypto-name">Dogecoin (DOGE)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="usdt" value="usdt">
+                                        <label for="usdt">
+                                            <i class="fas fa-dollar-sign crypto-icon" style="color: #26a17b;"></i>
+                                            <span class="crypto-name">Tether (USDT)</span>
+                                        </label>
+                                    </div>
+                                    <div class="crypto-option">
+                                        <input type="radio" name="cryptoType" id="bnb" value="bnb">
+                                        <label for="bnb">
+                                            <i class="fas fa-coins crypto-icon" style="color: #f3ba2f;"></i>
+                                            <span class="crypto-name">Binance Coin (BNB)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 20px;">
+                                    <label class="form-label">Wallet Address</label>
+                                    <input type="text" class="form-control" value="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Amount in USD</label>
+                                    <input type="text" class="form-control" value="$85.59" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" id="cryptoAmountLabel">Amount in BTC</label>
+                                    <input type="text" class="form-control" id="cryptoAmount" value="0.00312 BTC" readonly>
+                                </div>
+                                <p style="margin-top: 15px; color: var(--warning-dark);">
+                                    <i class="fas fa-info-circle"></i> Please send the exact amount to the wallet address above. Your membership will be renewed once the transaction is confirmed.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Billing Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Billing Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" id="firstName" class="form-control" placeholder="John" value="John">
+                                    <div class="error-message" id="firstNameError">Please enter your first name</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="lastName" class="form-control" placeholder="Doe" value="Doe">
+                                    <div class="error-message" id="lastNameError">Please enter your last name</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="john.doe@example.com" value="john.doe@example.com">
+                                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="(123) 456-7890" value="(123) 456-7890">
+                  class="form-control" placeholder="(123) 456-7890" value="(123) 456-7890">
+                                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" id="address" class="form-control" placeholder="123 Main St" value="123 Main St">
+                                <div class="error-message" id="addressError">Please enter your address</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" id="city" class="form-control" placeholder="New York" value="New York">
+                                    <div class="error-message" id="cityError">Please enter your city</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state" class="form-label">State</label>
+                                    <input type="text" id="state" class="form-control" placeholder="NY" value="NY">
+                                    <div class="error-message" id="stateError">Please enter your state</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode" class="form-label">Zip Code</label>
+                                    <input type="text" id="zipCode" class="form-control" placeholder="10001" value="10001">
+                                    <div class="error-message" id="zipCodeError">Please enter a valid zip code</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <div class="form-group">
+                                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                    <input type="checkbox" id="termsCheck" style="margin-top: 5px;" checked>
+                                    <label for="termsCheck" style="font-size: 0.9rem;">
+                                        I agree to the <a href="#" style="color: var(--primary);">Terms and Conditions</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a>. I understand that my membership will auto-renew unless cancelled.
+                                    </label>
+                                </div>
+                                <div class="error-message" id="termsError">You must agree to the terms and conditions</div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="button" class="btn btn-block" id="paymentSubmitBtn">
+                            Complete Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post-Payment Actions (initially hidden) -->
+            <div class="post-payment-actions" id="postPaymentActions" style="display: none;">
+                <button class="btn" id="viewReceiptFromFormBtn">
+                    <i class="fas fa-receipt"></i> View Receipt
+                </button>
+                <button class="btn btn-secondary" id="finishPaymentBtn">
+                    <i class="fas fa-check"></i> Finish Payment
+                </button>
+            </div>
+
+            <!-- Receipt -->
+            <div class="receipt" id="receipt">
+                <div class="receipt-header">
+                    <div class="receipt-logo">
+                        <i class="fas fa-dumbbell" style="font-size: 40px; color: var(--primary);"></i>
+                        <div class="receipt-logo-text">POWER<span style="color: var(--primary-dark);">FIT</span></div>
+                    </div>
+                    <div class="receipt-info">
+                        <div class="receipt-number" id="receiptNumber">Receipt #: MEM-2025-12345</div>
+                        <div class="receipt-date" id="receiptDate">Date: May 6, 2025</div>
+                    </div>
+                </div>
+
+                <h2 class="receipt-title">Payment Receipt</h2>
+
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Member Information</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Name:</span>
+                        <span class="receipt-value" id="receiptName">John Doe</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Email:</span>
+                        <span class="receipt-value" id="receiptEmail">john.doe@example.com</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Phone:</span>
+                        <span class="receipt-value" id="receiptPhone">(123) 456-7890</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Address:</span>
+                        <span class="receipt-value" id="receiptAddress">123 Main St, New York, NY 10001</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Member ID:</span>
+                        <span class="receipt-value" id="receiptMemberID">PF-2023-45678</span>
+                    </div>
+                </div>
+
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Membership Details</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Membership Plan:</span>
+                        <span class="receipt-value" id="receiptPlan">Standard Monthly</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Duration:</span>
+                        <span class="receipt-value" id="receiptDuration">1 Month</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Period:</span>
+                        <span class="receipt-value" id="receiptPeriod">May 6 - June 6, 2025</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Auto-Renewal:</span>
+                        <span class="receipt-value">Yes</span>
+                    </div>
+                </div>
+
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Payment Details</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Payment Method:</span>
+                        <span class="receipt-value" id="receiptPaymentMethod">Credit Card</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Base Price:</span>
+                        <span class="receipt-value" id="receiptBasePrice">$79.99</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Tax (7%):</span>
+                        <span class="receipt-value" id="receiptTax">$5.60</span>
+                    </div>
+                    <div class="receipt-total">
+                        <span>Total Paid:</span>
+                        <span id="receiptTotal">$85.59</span>
+                    </div>
+                </div>
+
+                <!-- Gym Policies Section -->
+                <div class="receipt-section">
+                    <h3 class="receipt-section-title">Gym Policies</h3>
+                    <div class="gym-policies">
+                        <h4 class="policies-title">PowerFit Gym House Policies</h4>
+                        <ul class="policies-list">
+                            <li>Membership is non-transferable and non-refundable.</li>
+                            <li>Members must present their membership card or ID for entry.</li>
+                            <li>Proper workout attire and athletic shoes are required at all times.</li>
+                            <li>Please wipe down equipment after use.</li>
+                            <li>Memberships can be frozen once per year for up to 30 days with written notice.</li>
+                            <li>Cancellations require 30-day written notice before the next billing cycle.</li>
+                            <li>Outside personal trainers are not permitted.</li>
+                            <li>PowerFit Gym is not responsible for lost or stolen items.</li>
+                            <li>Management reserves the right to terminate membership for violation of gym policies.</li>
+                            <li>Hours of operation may change during holidays or special events.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="receipt-footer">
+                    <div class="receipt-message">Thank you for choosing PowerFit Gym!</div>
+                    <div class="receipt-note">This receipt serves as proof of payment. Please keep it for your records.</div>
+                    <div class="receipt-actions">
+                        <button class="btn btn-outline" id="printReceiptBtn">
+                            <i class="fas fa-print"></i> Print Receipt
+                        </button>
+                        <button class="btn" id="downloadReceiptBtn">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button class="btn btn-secondary" id="emailReceiptBtn">
+                            <i class="fas fa-envelope"></i> Email Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment History Section -->
+            <div class="payment-history" id="paymentHistory">
+                <h2 class="history-title">Payment History</h2>
+                
+                <div id="historyEmpty" class="history-empty" style="display: none;">
+                    <i class="fas fa-history" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 15px;"></i>
+                    <p>No payment history found.</p>
+                </div>
+                
+                <ul id="historyList" class="history-list">
+                    <!-- Payment history items will be added here dynamically -->
+                </ul>
+                
+                <div class="history-actions">
+                    <div class="history-actions-left">
+                        <button class="btn btn-danger" id="clearHistoryBtn">
+                            <i class="fas fa-trash"></i> Clear History
+                        </button>
+                    </div>
+                    <div class="history-actions-right">
+                        <button class="btn btn-outline" id="backToPaymentBtn">
+                            <i class="fas fa-arrow-left"></i> Back to Payment
+                        </button>
+                        <button class="btn" id="finishHistoryBtn">
+                            <i class="fas fa-check"></i> Finish Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Include jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        // DOM Elements
+        const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+        const paymentSections = document.querySelectorAll('.payment-section');
+        const paymentSubmitBtn = document.getElementById('paymentSubmitBtn');
+        const paymentContainer = document.getElementById('paymentContainer');
+        const successMessage = document.getElementById('successMessage');
+        const receipt = document.getElementById('receipt');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const printReceiptBtn = document.getElementById('printReceiptBtn');
+        const downloadReceiptBtn = document.getElementById('downloadReceiptBtn');
+        const emailReceiptBtn = document.getElementById('emailReceiptBtn');
+        const backToMain = document.getElementById('backToMain');
+        const cryptoOptions = document.querySelectorAll('input[name="cryptoType"]');
+        const cryptoAmountLabel = document.getElementById('cryptoAmountLabel');
+        const cryptoAmount = document.getElementById('cryptoAmount');
+        const viewReceiptBtn = document.getElementById('viewReceiptBtn');
+        const viewReceiptFromFormBtn = document.getElementById('viewReceiptFromFormBtn');
+        const backToPaymentFormBtn = document.getElementById('backToPaymentFormBtn');
+        const finishPaymentBtn = document.getElementById('finishPaymentBtn');
+        const viewPaymentHistory = document.getElementById('viewPaymentHistory');
+        const paymentHistory = document.getElementById('paymentHistory');
+        const historyList = document.getElementById('historyList');
+        const historyEmpty = document.getElementById('historyEmpty');
+        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+        const backToPaymentBtn = document.getElementById('backToPaymentBtn');
+        const finishHistoryBtn = document.getElementById('finishHistoryBtn');
+        const postPaymentActions = document.getElementById('postPaymentActions');
+
+        // Form Elements
+        const cardNumber = document.getElementById('cardNumber');
+        const expiryDate = document.getElementById('expiryDate');
+        const cvv = document.getElementById('cvv');
+        const cardName = document.getElementById('cardName');
+        const paypalEmail = document.getElementById('paypalEmail');
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const address = document.getElementById('address');
+        const city = document.getElementById('city');
+        const state = document.getElementById('state');
+        const zipCode = document.getElementById('zipCode');
+        const termsCheck = document.getElementById('termsCheck');
+
+        // Error Elements
+        const cardNumberError = document.getElementById('cardNumberError');
+        const expiryDateError = document.getElementById('expiryDateError');
+        const cvvError = document.getElementById('cvvError');
+        const cardNameError = document.getElementById('cardNameError');
+        const paypalEmailError = document.getElementById('paypalEmailError');
+        const firstNameError = document.getElementById('firstNameError');
+        const lastNameError = document.getElementById('lastNameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const addressError = document.getElementById('addressError');
+        const cityError = document.getElementById('cityError');
+        const stateError = document.getElementById('stateError');
+        const zipCodeError = document.getElementById('zipCodeError');
+        const termsError = document.getElementById('termsError');
+
+        // Receipt Elements
+        const receiptNumber = document.getElementById('receiptNumber');
+        const receiptDate = document.getElementById('receiptDate');
+        const receiptName = document.getElementById('receiptName');
+        const receiptEmail = document.getElementById('receiptEmail');
+        const receiptPhone = document.getElementById('receiptPhone');
+        const receiptAddress = document.getElementById('receiptAddress');
+        const receiptMemberID = document.getElementById('receiptMemberID');
+        const receiptPlan = document.getElementById('receiptPlan');
+        const receiptDuration = document.getElementById('receiptDuration');
+        const receiptPeriod = document.getElementById('receiptPeriod');
+        const receiptPaymentMethod = document.getElementById('receiptPaymentMethod');
+        const receiptBasePrice = document.getElementById('receiptBasePrice');
+        const receiptTax = document.getElementById('receiptTax');
+        const receiptTotal = document.getElementById('receiptTotal');
+
+        // Current Date
+        const currentDate = new Date();
+        const formattedDate = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
+        
+        // Calculate next month date
+        const nextMonthDate = new Date(currentDate);
+        nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);
+        const formattedNextMonthDate = `${nextMonthDate.toLocaleString('default', { month: 'long' })} ${nextMonthDate.getDate()}, ${nextMonthDate.getFullYear()}`;
+        
+        // Calculate previous month date
+        const prevMonthDate = new Date(currentDate);
+        prevMonthDate.setMonth(prevMonthDate.getMonth() - 1);
+        const formattedPrevMonthDate = `${prevMonthDate.toLocaleString('default', { month: 'long' })} ${prevMonthDate.getDate()}, ${prevMonthDate.getFullYear()}`;
+        
+        // Set dates in the UI
+        document.getElementById('membershipCurrent').textContent = `${formattedPrevMonthDate} - ${formattedDate}`;
+        document.getElementById('membershipNext').textContent = `${formattedDate} - ${formattedNextMonthDate}`;
+        
+        // Set receipt date
+        document.getElementById('receiptDate').textContent = `Date: ${formattedDate}`;
+        document.getElementById('receiptPeriod').textContent = `${formattedDate} - ${formattedNextMonthDate}`;
+
+        // Generate random receipt number
+        const receiptNum = `MEM-${currentDate.getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+        document.getElementById('receiptNumber').textContent = `Receipt #: ${receiptNum}`;
+
+        // Payment History Storage
+        let paymentHistoryData = JSON.parse(localStorage.getItem('paymentHistory')) || [
+            {
+                receiptNumber: `MEM-${currentDate.getFullYear()}-12344`,
+                date: formattedPrevMonthDate,
+                name: "John Doe",
+                email: "john.doe@example.com",
+                phone: "(123) 456-7890",
+                address: "123 Main St, New York, NY 10001",
+                plan: "Standard Monthly",
+                duration: "1 Month",
+                period: `${prevMonthDate.toLocaleString('default', { month: 'long' })} ${prevMonthDate.getDate() - 30}, ${prevMonthDate.getFullYear()} - ${formattedPrevMonthDate}`,
+                method: "Credit Card (ending in 4567)",
+                basePrice: "79.99",
+                tax: "5.60",
+                amount: "85.59",
+                status: "Completed"
+            },
+            {
+                receiptNumber: `MEM-${currentDate.getFullYear()}-12343`,
+                date: new Date(prevMonthDate.setMonth(prevMonthDate.getMonth() - 1)).toLocaleString('default', { month: 'long' }) + " " + prevMonthDate.getDate() + ", " + prevMonthDate.getFullYear(),
+                name: "John Doe",
+                email: "john.doe@example.com",
+                phone: "(123) 456-7890",
+                address: "123 Main St, New York, NY 10001",
+                plan: "Standard Monthly",
+                duration: "1 Month",
+                period: `${new Date(prevMonthDate.setDate(prevMonthDate.getDate() - 30)).toLocaleString('default', { month: 'long' })} ${prevMonthDate.getDate()}, ${prevMonthDate.getFullYear()} - ${new Date(prevMonthDate.setMonth(prevMonthDate.getMonth() + 1)).toLocaleString('default', { month: 'long' })} ${prevMonthDate.getDate()}, ${prevMonthDate.getFullYear()}`,
+                method: "PayPal (john.doe@example.com)",
+                basePrice: "79.99",
+                tax: "5.60",
+                amount: "85.59",
+                status: "Completed"
+            }
+        ];
+
+        // Initialize Payment History
+        function initPaymentHistory() {
+            if (paymentHistoryData.length > 0) {
+                historyEmpty.style.display = 'none';
+                renderPaymentHistory();
+            } else {
+                historyEmpty.style.display = 'block';
+                historyList.innerHTML = '';
+            }
+        }
+
+        // Render Payment History
+        function renderPaymentHistory() {
+            historyList.innerHTML = '';
+            
+            paymentHistoryData.forEach((payment, index) => {
+                const historyItem = document.createElement('li');
+                historyItem.className = 'history-item';
+                historyItem.dataset.index = index;
+                
+                const statusClass = payment.status === 'Completed' ? 'status-completed' : 'status-pending';
+                
+                historyItem.innerHTML = `
+                    <div class="history-item-header">
+                        <div class="history-item-title">${payment.plan} Membership</div>
+                        <div class="history-item-date">${payment.date}</div>
+                    </div>
+                    <div class="history-item-summary">
+                        <div class="history-item-amount">$${payment.amount}</div>
+                        <div class="history-item-method">${payment.method}</div>
+                    </div>
+                    <span class="history-item-status ${statusClass}">${payment.status}</span>
+                    <div class="history-details" id="historyDetails-${index}">
+                        <h4 class="history-details-title">Payment Details</h4>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Receipt Number:</div>
+                            <div class="history-details-value">${payment.receiptNumber}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Name:</div>
+                            <div class="history-details-value">${payment.name}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Email:</div>
+                            <div class="history-details-value">${payment.email}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Phone:</div>
+                            <div class="history-details-value">${payment.phone}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Address:</div>
+                            <div class="history-details-value">${payment.address}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Membership Period:</div>
+                            <div class="history-details-value">${payment.period}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Base Price:</div>
+                            <div class="history-details-value">$${payment.basePrice}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Tax:</div>
+                            <div class="history-details-value">$${payment.tax}</div>
+                        </div>
+                        <div class="history-details-row">
+                            <div class="history-details-label">Total Amount:</div>
+                            <div class="history-details-value">$${payment.amount}</div>
+                        </div>
+                    </div>
+                `;
+                
+                historyList.appendChild(historyItem);
+                
+                // Add click event to toggle details
+                historyItem.addEventListener('click', function() {
+                    const detailsElement = document.getElementById(`historyDetails-${index}`);
+                    const allDetails = document.querySelectorAll('.history-details');
+                    
+                    // Close all other details
+                    allDetails.forEach(detail => {
+                        if (detail !== detailsElement) {
+                            detail.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle current details
+                    detailsElement.classList.toggle('show');
+                });
+            });
+        }
+
+        // Save Payment to History
+        function savePaymentToHistory(paymentData) {
+            paymentHistoryData.unshift(paymentData); // Add to beginning of array
+            localStorage.setItem('paymentHistory', JSON.stringify(paymentHistoryData));
+            initPaymentHistory();
+        }
+
+        // Clear Payment History
+        function clearPaymentHistory() {
+            paymentHistoryData = [];
+            localStorage.removeItem('paymentHistory');
+            initPaymentHistory();
+        }
+
+        // Payment Method Selection
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', () => {
+                // Hide all payment sections
+                paymentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected payment section
+                const selectedMethod = document.querySelector(`input[name="paymentMethod"]:checked`).value;
+                document.getElementById(`${selectedMethod}Section`).classList.add('active');
+                
+                // Update button text based on payment method
+                if (selectedMethod === 'bankTransfer') {
+                    paymentSubmitBtn.textContent = 'Confirm Bank Transfer Details';
+                } else if (selectedMethod === 'applePay') {
+                    paymentSubmitBtn.textContent = 'Continue with Apple Pay';
+                } else if (selectedMethod === 'payAtGym') {
+                    paymentSubmitBtn.textContent = 'Reserve Payment';
+                } else if (selectedMethod === 'crypto') {
+                    paymentSubmitBtn.textContent = 'Confirm Crypto Payment Details';
+                } else {
+                    paymentSubmitBtn.textContent = 'Complete Payment';
+                }
+            });
+        });
+
+        // Cryptocurrency Selection
+        cryptoOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                const selectedCrypto = document.querySelector('input[name="cryptoType"]:checked').value;
+                let cryptoSymbol = 'BTC';
+                let cryptoValue = '0.00312';
+                
+                switch(selectedCrypto) {
+                    case 'ethereum':
+                        cryptoSymbol = 'ETH';
+                        cryptoValue = '0.0427';
+                        break;
+                    case 'litecoin':
+                        cryptoSymbol = 'LTC';
+                        cryptoValue = '1.0432';
+                        break;
+                    case 'dogecoin':
+                        cryptoSymbol = 'DOGE';
+                        cryptoValue = '283.65';
+                        break;
+                    case 'usdt':
+                        cryptoSymbol = 'USDT';
+                        cryptoValue = '85.59';
+                        break;
+                    case 'bnb':
+                        cryptoSymbol = 'BNB';
+                        cryptoValue = '0.2423';
+                        break;
+                    default:
+                        cryptoSymbol = 'BTC';
+                        cryptoValue = '0.00312';
+                }
+                
+                cryptoAmountLabel.textContent = `Amount in ${cryptoSymbol}`;
+                cryptoAmount.value = `${cryptoValue} ${cryptoSymbol}`;
+            });
+        });
+
+        // Format Card Number
+        cardNumber.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' ';
+                }
+                formattedValue += value[i];
+            }
+            
+            e.target.value = formattedValue;
+        });
+
+        // Format Expiry Date
+        expiryDate.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            
+            e.target.value = value;
+        });
+
+        // Format Phone Number
+        phone.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            
+            if (value.length > 0) {
+                formattedValue = '(' + value.substring(0, 3);
+            }
+            if (value.length > 3) {
+                formattedValue += ') ' + value.substring(3, 6);
+            }
+            if (value.length > 6) {
+                formattedValue += '-' + value.substring(6, 10);
+            }
+            
+            e.target.value = formattedValue;
+        });
+
+        // Validate Form
+        function validateForm() {
+            let isValid = true;
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            // Reset all error messages
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => {
+                error.classList.remove('show');
+            });
+            
+            // Validate based on payment method
+            if (selectedMethod === 'creditCard') {
+                // CVV Validation only for credit card
+                if (!cvv.value.trim() || cvv.value.length < 3) {
+                    cvvError.classList.add('show');
+                    cvv.classList.add('error');
+                    isValid = false;
+                } else {
+                    cvv.classList.remove('error');
+                }
+            } else if (selectedMethod === 'paypal') {
+                // PayPal Email Validation
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!paypalEmail.value.trim() || !emailPattern.test(paypalEmail.value)) {
+                    paypalEmailError.classList.add('show');
+                    paypalEmail.classList.add('error');
+                    isValid = false;
+                } else {
+                    paypalEmail.classList.remove('error');
+                }
+            }
+            
+            // Terms and Conditions
+            if (!termsCheck.checked) {
+                termsError.classList.add('show');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Submit Payment
+        paymentSubmitBtn.addEventListener('click', () => {
+            if (validateForm()) {
+                // Show loading overlay
+                loadingOverlay.classList.add('show');
+                
+                // Simulate payment processing
+                setTimeout(() => {
+                    // Hide loading overlay
+                    loadingOverlay.classList.remove('show');
+                    
+                    // Update receipt information
+                    const paymentData = updateReceipt();
+                    
+                    // Save payment to history
+                    savePaymentToHistory(paymentData);
+                    
+                    // Hide payment container
+                    paymentContainer.style.display = 'none';
+                    
+                    // Show success message
+                    successMessage.classList.add('show');
+                    
+                    // Show post-payment actions
+                    postPaymentActions.style.display = 'flex';
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 2000);
+            }
+        });
+
+        // Update Receipt
+        function updateReceipt() {
+            const fullName = `${firstName.value} ${lastName.value}`;
+            const fullAddress = `${address.value}, ${city.value}, ${state.value} ${zipCode.value}`;
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            let paymentMethodText = '';
+            let paymentStatus = 'Completed';
+            
+            switch (selectedMethod) {
+                case 'creditCard':
+                    const lastFour = cardNumber.value.replace(/\s/g, '').slice(-4);
+                    paymentMethodText = `Credit Card (ending in ${lastFour})`;
+                    break;
+                case 'paypal':
+                    paymentMethodText = `PayPal (${paypalEmail.value})`;
+                    break;
+                case 'bankTransfer':
+                    paymentMethodText = 'Bank Transfer';
+                    paymentStatus = 'Pending';
+                    break;
+                case 'applePay':
+                    paymentMethodText = 'Apple Pay';
+                    break;
+                case 'payAtGym':
+                    paymentMethodText = 'Pay at Gym House';
+                    paymentStatus = 'Pending';
+                    break;
+                case 'crypto':
+                    const selectedCrypto = document.querySelector('input[name="cryptoType"]:checked').value;
+                    let cryptoName = 'Bitcoin';
+                    
+                    switch(selectedCrypto) {
+                        case 'ethereum':
+                            cryptoName = 'Ethereum';
+                            break;
+                        case 'litecoin':
+                            cryptoName = 'Litecoin';
+                            break;
+                        case 'dogecoin':
+                            cryptoName = 'Dogecoin';
+                            break;
+                        case 'usdt':
+                            cryptoName = 'Tether';
+                            break;
+                        case 'bnb':
+                            cryptoName = 'Binance Coin';
+                            break;
+                    }
+                    
+                    paymentMethodText = `Cryptocurrency (${cryptoName})`;
+                    paymentStatus = 'Pending';
+                    break;
+            }
+            
+            // Update receipt with user information
+            receiptName.textContent = fullName;
+            receiptEmail.textContent = email.value;
+            receiptPhone.textContent = phone.value;
+            receiptAddress.textContent = fullAddress;
+            receiptPaymentMethod.textContent = paymentMethodText;
+            
+            // Create payment data object for history
+            const paymentData = {
+                receiptNumber: receiptNum,
+                date: formattedDate,
+                name: fullName,
+                email: email.value,
+                phone: phone.value,
+                address: fullAddress,
+                plan: document.getElementById('summaryPlan').textContent,
+                duration: document.getElementById('summaryDuration').textContent,
+                period: `${formattedDate} - ${formattedNextMonthDate}`,
+                method: paymentMethodText,
+                basePrice: document.getElementById('summaryBasePrice').textContent.replace('$', ''),
+                tax: document.getElementById('summaryTax').textContent.replace('$', ''),
+                amount: document.getElementById('summaryTotal').textContent.replace('$', ''),
+                status: paymentStatus
+            };
+            
+            return paymentData;
+        }
+
+        // View Receipt Button from Success Message
+        viewReceiptBtn.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            receipt.style.display = 'block';
+        });
+
+        // View Receipt Button from Form
+        viewReceiptFromFormBtn.addEventListener('click', () => {
+            receipt.style.display = 'block';
+        });
+
+        // Back to Payment Form Button
+        backToPaymentFormBtn.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            paymentContainer.style.display = 'flex';
+        });
+
+        // Finish Payment Button
+        finishPaymentBtn.addEventListener('click', () => {
+            // Redirect to original payment page
+            alert('Payment completed successfully! Redirecting to the main page...');
+            // In a real application, you would redirect to the main page
+            window.location.href = 'index.html';
+        });
+
+        // View Payment History
+        viewPaymentHistory.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Hide other sections
+            paymentContainer.style.display = 'none';
+            successMessage.style.display = 'none';
+            receipt.style.display = 'none';
+            postPaymentActions.style.display = 'none';
+            
+            // Show payment history
+            paymentHistory.style.display = 'block';
+            
+            // Initialize payment history
+            initPaymentHistory();
+        });
+
+        // Back to Payment Button
+        backToPaymentBtn.addEventListener('click', () => {
+            // Hide payment history
+            paymentHistory.style.display = 'none';
+            
+            // Show payment container
+            paymentContainer.style.display = 'flex';
+            
+            // Show post-payment actions if payment was completed
+            if (paymentHistoryData.length > 0) {
+                postPaymentActions.style.display = 'flex';
+            }
+        });
+
+        // Finish History Button
+        finishHistoryBtn.addEventListener('click', () => {
+            // Redirect to original payment page
+            alert('Redirecting to the main page...');
+            // In a real application, you would redirect to the main page
+            window.location.href = 'index.html';
+        });
+
+        // Clear History Button
+        clearHistoryBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear your payment history? This action cannot be undone.')) {
+                clearPaymentHistory();
+            }
+        });
+
+        // Print Receipt
+        printReceiptBtn.addEventListener('click', () => {
+            window.print();
+        });
+
+        // Download Receipt as PDF
+        downloadReceiptBtn.addEventListener('click', () => {
+            // Show loading overlay
+            loadingOverlay.classList.add('show');
+            
+            const { jsPDF } = window.jspdf;
+            
+            // Create a new PDF document
+            html2canvas(receipt, { scale: 2 }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save(`PowerFit_Monthly_Receipt_${receiptNum}.pdf`);
+                
+                // Hide loading overlay
+                loadingOverlay.classList.remove('show');
+            });
+        });
+
+        // Email Receipt
+        emailReceiptBtn.addEventListener('click', () => {
+            // Show loading overlay
+            loadingOverlay.classList.add('show');
+            
+            // Simulate sending email
+            setTimeout(() => {
+                // Hide loading overlay
+                loadingOverlay.classList.remove('show');
+                
+                alert(`Receipt has been sent to ${email.value}`);
+            }, 1500);
+        });
+
+        // Back to Main
+        backToMain.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'index.html';
+        });
+
+        // Initialize payment history on page load
+        initPaymentHistory();
+    </script>
+</body>
+</html>

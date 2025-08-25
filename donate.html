@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate | PowerFit</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    p.description {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      background: #ff9800;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    button:hover {
+      background: #e68900;
+      transform: scale(1.05);
+    }
+
+    .donate-section {
+      margin-top: 2rem;
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    .donate-section input {
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: none;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      width: 120px;
+    }
+
+    .thankyou {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #4caf50;
+      display: none;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Join the Next Challenge</h1>
+  <p class="description">
+    Be part of the PowerFit movement. Your donations help us host community challenges and support local charities. Every dollar counts in building a stronger, healthier community together.
+  </p>
+
+  <div class="donate-section">
+    <input type="number" id="donationAmount" min="1" placeholder="$ Amount">
+    <button onclick="submitDonation()">Donate</button>
+    <div class="thankyou" id="thankyouMsg">Thank you for your support!</div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="window.location.href='membership.html'">Join PowerFit</button>
+  </div>
+  <script>
+    function submitDonation() {
+      const amount = document.getElementById('donationAmount').value;
+      const msg = document.getElementById('thankyouMsg');
+      if (amount && amount >= 1) {
+        msg.style.display = "block";
+        msg.textContent = `Thank you for donating $${amount}!`;
+        document.getElementById('donationAmount').value = '';
+      } else {
+        msg.style.display = "block";
+        msg.style.color = "red";
+        msg.textContent = "Please enter a valid amount (min $1).";
+      }
+    }
+  </script>
+</body>
+</html>
